@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NostalgiaOS 95 :: Brinquedos & Guloseimas dos anos 70, 80, 90 e 2000</title>
+<meta name="description" content="Um museu nostálgico estilo desktop dos anos 90 com os brinquedos, games, brincadeiras de rua, doces, salgadinhos, bebidas e sorvetes que marcaram a infância nas décadas de 70, 80, 90 e 2000. Com imagens da época e a história de cada um.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{ --teal:#008080; --gray:#c0c0c0; --dark:#808080; --light:#fff; --shadow:#404040; --navy:#000080; --yellow:#ffff00; }
+  html, body { height: 100%; }
+  body{
+    font-family:"MS Sans Serif","Tahoma","Geneva",Verdana,sans-serif; font-size:13px; color:#000;
+    background:#207868; background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:4px 4px; min-height:100%; padding-bottom:46px; overflow-x:hidden;
+  }
+  .bevel-out{ border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); box-shadow:inset 1px 1px 0 var(--gray), inset -1px -1px 0 var(--dark); }
+  .bevel-in{ border:2px solid; border-color:var(--shadow) var(--light) var(--light) var(--shadow); box-shadow:inset 1px 1px 0 var(--dark), inset -1px -1px 0 var(--gray); }
+
+  .marquee-bar{ background:var(--navy); color:#fff; padding:3px 0; font-weight:bold; letter-spacing:1px; overflow:hidden; white-space:nowrap; border-bottom:2px solid #000; }
+  .marquee-bar span{ display:inline-block; padding-left:100%; animation:scroll 26s linear infinite; }
+  @keyframes scroll{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
+
+  .window{ max-width:1180px; margin:18px auto; background:var(--gray); padding:3px; }
+  .title-bar{ background:linear-gradient(90deg,var(--navy),#1084d0); color:#fff; padding:3px 4px; display:flex; align-items:center; justify-content:space-between; font-weight:bold; }
+  .title-bar .t-left{ display:flex; align-items:center; gap:6px; }
+  .title-bar .t-icon{ background:#fff; color:var(--navy); font-size:11px; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; border:1px solid #000; }
+  .title-buttons{ display:flex; gap:2px; }
+  .title-buttons button{ width:18px; height:18px; background:var(--gray); font-size:10px; font-weight:bold; line-height:1; cursor:default; border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); }
+  .window-body{ padding:12px; }
+
+  .hero{ text-align:center; padding:16px 10px; margin-bottom:12px; background:repeating-linear-gradient(45deg,#7a0f52 0 12px,#5a0a3e 12px 24px); color:#fff; }
+  .hero h1{ font-size:28px; text-shadow:3px 3px 0 #00ffff, 6px 6px 0 #ffcc00; letter-spacing:1px; line-height:1.2; }
+  .hero .blink{ animation:blink 1s steps(2,start) infinite; color:var(--yellow); }
+  @keyframes blink{ to{visibility:hidden;} }
+  .hero p{ margin-top:10px; font-size:13px; }
+  .hero .under-construction{ display:inline-block; margin-top:12px; background:#000; color:#ffff00; padding:4px 10px; font-weight:bold; border:2px dashed #ffff00; font-size:12px; }
+
+  /* Navegação entre páginas */
+  .navlinks{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:12px; }
+  .navlinks a{ text-decoration:none; color:#000; background:var(--gray); font-weight:bold; padding:6px 12px; font-size:12px; border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); }
+  .navlinks a.here{ background:#d8d8d8; border-color:var(--shadow) var(--light) var(--light) var(--shadow); }
+  .navlinks a:active{ border-color:var(--shadow) var(--light) var(--light) var(--shadow); }
+
+  .notice{ background:#ffffcc; color:#000; border:2px solid #000; padding:8px 10px; margin-bottom:14px; font-size:12px; display:flex; gap:10px; align-items:flex-start; }
+  .notice .ico{ font-size:20px; }
+
+  .tabs{ display:flex; flex-wrap:wrap; gap:4px; padding:0 4px; }
+  .tab{ background:var(--gray); padding:6px 12px; cursor:pointer; font-weight:bold; border:2px solid; border-bottom:none; border-color:var(--light) var(--shadow) transparent var(--light); position:relative; top:2px; font-size:12.5px; }
+  .tab.active{ background:#d8d8d8; top:0; padding-bottom:8px; z-index:2; }
+
+  .tab-panel-frame{ background:#d8d8d8; padding:14px; }
+  .decade-desc{ background:#000; color:#00ff00; font-family:"Courier New",monospace; padding:8px 10px; margin-bottom:6px; font-size:12px; border:2px inset #666; }
+  .decade-desc::before{ content:"C:\\NOSTALGIA> "; color:#888; }
+
+  .cat-index{ display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 4px; }
+  .cat-index a{ font-size:11px; background:var(--gray); color:#000; text-decoration:none; padding:3px 8px; border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); }
+  .cat-index a:active{ border-color:var(--shadow) var(--light) var(--light) var(--shadow); }
+
+  .cat-header{ margin:18px 0 10px; padding:5px 10px; font-weight:bold; font-size:15px; color:#fff; background:linear-gradient(90deg,#7a0f52,#b02a7a); display:flex; align-items:center; justify-content:space-between; border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); scroll-margin-top:10px; }
+  .cat-header .cnt{ background:var(--yellow); color:#000; font-size:11px; padding:0 6px; }
+
+  .cards{ display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:12px; }
+  .card{ background:var(--gray); padding:3px; display:flex; flex-direction:column; }
+  .card-tb{ background:linear-gradient(90deg,#134a8e,#1c74c0); color:#fff; font-weight:bold; padding:3px 6px; font-size:12px; display:flex; justify-content:space-between; align-items:center; gap:6px; }
+  .card-tb .nm{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .card-tb .yr{ background:#ffff00; color:#000; padding:0 5px; font-size:11px; flex:none; }
+  .card-body{ padding:9px; background:#c0c0c0; flex:1; display:flex; flex-direction:column; }
+
+  .poster{ height:150px; background:#000 center/cover no-repeat; margin-bottom:8px; border:2px inset #666; display:flex; align-items:center; justify-content:center; font-size:44px; position:relative; overflow:hidden; text-align:center; }
+  .poster .ph{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; width:100%; height:100%; background:repeating-linear-gradient(45deg,#111 0 10px,#1a1a1a 10px 20px); color:#eee; }
+  .poster .ph .nm2{ font-size:11px; font-weight:bold; padding:0 6px; color:#ffd; letter-spacing:.5px; }
+  .poster.loading .ph::after{ content:"⏳"; font-size:14px; }
+  .poster img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .card-type{ display:inline-block; background:var(--navy); color:#fff; font-size:10px; padding:1px 6px; margin-bottom:6px; align-self:flex-start; text-transform:uppercase; }
+  .card h3{ font-size:14px; margin-bottom:2px; line-height:1.2; }
+  .card .orig{ font-size:11px; color:#333; font-style:italic; margin-bottom:6px; }
+  .card .nota{ font-size:11.5px; color:#222; margin-bottom:4px; }
+  .retro dt{ font-weight:bold; color:var(--navy); margin-top:6px; font-size:12px; }
+  .retro dd{ font-size:12px; line-height:1.42; margin-top:2px; }
+
+  .yt-btn{ display:block; text-align:center; margin-top:10px; background:#cc0000; color:#fff !important; text-decoration:none; padding:6px; font-weight:bold; font-size:11.5px; border:2px solid; border-color:#ff6666 #660000 #660000 #ff6666; }
+  .yt-btn:hover{ background:#e50000; }
+  .yt-btn:active{ border-color:#660000 #ff6666 #ff6666 #660000; }
+
+  .footer{ text-align:center; padding:16px; margin-top:16px; font-size:12px; background:#c0c0c0; border-top:2px solid var(--light); }
+  .footer .counter{ display:inline-block; background:#000; color:#0f0; font-family:"Courier New",monospace; padding:2px 8px; letter-spacing:3px; border:1px solid #0f0; margin:0 4px; }
+  .footer a{ color:var(--navy); }
+
+  .taskbar{ position:fixed; bottom:0; left:0; right:0; height:36px; background:var(--gray); display:flex; align-items:center; padding:3px 4px; gap:6px; border-top:2px solid var(--light); z-index:100; }
+  .start-btn{ display:flex; align-items:center; gap:5px; background:var(--gray); font-weight:bold; padding:3px 10px; cursor:pointer; border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); font-size:13px; }
+  .start-btn .logo{ display:inline-block; width:16px; height:16px; background:linear-gradient(135deg,#ff0000 0 50%,#00a000 50% 100%); }
+  .start-btn:active{ border-color:var(--shadow) var(--light) var(--light) var(--shadow); }
+  .task-tabs{ flex:1; display:flex; gap:4px; overflow:hidden; }
+  .task-tab{ padding:3px 12px; font-size:12px; background:#d8d8d8; border:2px solid; border-color:var(--shadow) var(--light) var(--light) var(--shadow); white-space:nowrap; }
+  .tray{ display:flex; align-items:center; gap:8px; padding:3px 10px; border:2px solid; border-color:var(--shadow) var(--light) var(--light) var(--shadow); font-size:12px; }
+
+  .start-menu{ display:none; position:fixed; bottom:38px; left:4px; width:250px; z-index:200; background:var(--gray); border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); }
+  .start-menu.open{ display:flex; }
+  .start-menu .sidebar{ width:28px; background:linear-gradient(var(--navy),#1084d0); writing-mode:vertical-lr; transform:rotate(180deg); color:#fff; font-weight:bold; font-size:15px; text-align:center; padding:8px 0; letter-spacing:2px; }
+  .start-menu ul{ list-style:none; flex:1; padding:3px; }
+  .start-menu li{ padding:6px 8px; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:8px; }
+  .start-menu li a{ color:inherit; text-decoration:none; }
+  .start-menu li:hover{ background:var(--navy); color:#fff; }
+  .start-menu .sep{ border-top:1px solid var(--dark); border-bottom:1px solid var(--light); margin:3px 2px; padding:0; }
+
+  @media (max-width:640px){ .hero h1{ font-size:18px; } .cards{ grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); } .task-tabs{ display:none; } }
+</style>
+</head>
+<body>
+
+  <div class="marquee-bar">
+    <span>★ MUSEU DA INFÂNCIA ★ &nbsp; BRINQUEDOS • GAMES • DOCES • SALGADINHOS • SORVETES ★ &nbsp; 70s • 80s • 90s • 2000s ★ &nbsp; VOCÊ TINHA QUAL DESSES? ★ &nbsp; INSIRA A FICHA E BRINQUE ★</span>
+  </div>
+
+  <div class="window bevel-out">
+    <div class="title-bar">
+      <div class="t-left"><span class="t-icon">🧸</span><span>Brinquedos & Guloseimas.exe — O Baú da Infância</span></div>
+      <div class="title-buttons"><button title="Minimizar">_</button><button title="Maximizar">▢</button><button title="Fechar">✕</button></div>
+    </div>
+
+    <div class="window-body">
+
+      <div class="hero">
+        <h1>~ O BAÚ DA INFÂNCIA ~<span class="blink">_</span></h1>
+        <p>Os brinquedos, games, doces e salgadinhos que marcaram época — com imagens e a história de cada um.</p>
+        <div class="under-construction">🚧 ABRINDO O BAÚ... 🚧</div>
+      </div>
+
+      <div class="navlinks">
+        <a href="index.html">📺 Desenhos &amp; Séries</a>
+        <a href="brinquedos.html" class="here">🧸 Brinquedos &amp; Guloseimas</a>
+      </div>
+
+      <div class="notice bevel-in">
+        <span class="ico">💡</span>
+        <div>
+          <b>Imagens & propagandas:</b> as fotos são carregadas da <b>Wikipédia</b> quando cada card aparece na tela
+          (quando não há, mostramos um pôster estilizado). O botão <b>▶ VER PROPAGANDA ANTIGA</b> abre a busca do
+          <b>comercial de época</b> no YouTube — aquele que passava no intervalo do desenho. 📺
+        </div>
+      </div>
+
+      <div class="tabs" id="tabs"></div>
+      <div class="tab-panel-frame bevel-in">
+        <div class="decade-desc" id="decadeDesc"></div>
+        <div class="cat-index" id="catIndex"></div>
+        <div id="content"></div>
+      </div>
+
+      <div class="footer">
+        <p>Feito com muito ❤️, cheiro de plástico de brinquedo novo e gosto de pó de refresco.</p>
+        <p style="margin-top:8px;">Visitantes desde 1998: <span class="counter" id="counter">00013370</span></p>
+        <p style="margin-top:8px;"><a href="#top">▲ Voltar ao topo</a> &nbsp;|&nbsp; <a href="index.html">📺 Ir para Desenhos &amp; Séries</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="start-menu" id="startMenu">
+    <div class="sidebar">Nostalgia&nbsp;95</div>
+    <ul>
+      <li><a href="index.html">📺 Desenhos &amp; Séries</a></li>
+      <li class="sep"></li>
+      <li data-goto="brinquedos">🧸 Brinquedos</li>
+      <li data-goto="games">🎮 Games &amp; eletrônicos</li>
+      <li data-goto="rua">🏘️ Brincadeiras de rua</li>
+      <li data-goto="doces">🍫 Doces &amp; chocolates</li>
+      <li data-goto="salgados">🍟 Salgadinhos &amp; bolachas</li>
+      <li data-goto="bebidas">🥤 Bebidas &amp; achocolatados</li>
+      <li data-goto="sorvetes">🍦 Sorvetes &amp; geladinhos</li>
+      <li class="sep"></li>
+      <li onclick="alert('Você nunca desliga a nostalgia. 😉')">⏻ Desligar...</li>
+    </ul>
+  </div>
+
+  <span id="top"></span>
+
+  <div class="taskbar bevel-out">
+    <div class="start-btn" id="startBtn"><span class="logo"></span> Iniciar</div>
+    <div class="task-tabs"><div class="task-tab">🧸 Brinquedos.exe</div></div>
+    <div class="tray">🔊 <span id="clock">12:00</span></div>
+  </div>
+
+<script>
+/* Campos: nome, orig(marca/ano), tipo, emoji, ano?, q?(imagem Wiki),
+   yt?(propaganda), historia?/curiosidade?/hoje? (história completa), nota?(ficha leve) */
+const SECTIONS = {
+
+  "brinquedos": {
+    label:"🧸 Brinquedos",
+    desc:"dir brinquedos /p:por-categoria --abre CAIXA-DE-BRINQUEDOS.BAT",
+    groups:[
+      { cat:"🦸 Bonecos & action figures", items:[
+        { nome:"Falcon", orig:"Estrela — Brasil (1976)", tipo:"Boneco", emoji:"🪖", q:"Falcon (boneco)",
+          historia:"Versão brasileira do G.I. Joe, lançado pela Estrela. O boneco de ação com barba, roupas militares e acessórios foi febre entre os meninos dos anos 70/80.",
+          curiosidade:"Tinha o famoso 'olhar águia' que se movia com uma alavanca nas costas e a mão que segurava acessórios.",
+          hoje:"Virou item de colecionador caríssimo; a Estrela relançou edições comemorativas.", yt:"propaganda antiga Falcon Estrela boneco comercial" },
+        { nome:"He-Man e bonecos MOTU", orig:"Mattel/Estrela (1982)", tipo:"Action figure", emoji:"⚔️", q:"He-Man action figure Masters Universe toy",
+          historia:"Os bonecos musculosos de Eternia foram criados para vender junto com o desenho — na verdade, o desenho existia para vender os bonecos.",
+          curiosidade:"O soco do He-Man funcionava girando o tronco do boneco. Castelo de Grayskull era o brinquedo dos sonhos.",
+          hoje:"A linha Masters of the Universe Origins revive os bonecos para colecionadores adultos.", yt:"propaganda antiga He-Man bonecos Mattel comercial anos 80" },
+        { nome:"Comandos em Ação", orig:"G.I. Joe / Estrela (1980s)", tipo:"Action figure", emoji:"🎖️", q:"G.I. Joe action figure toy",
+          historia:"Os soldadinhos articulados da Hasbro (Estrela no Brasil) com veículos e a organização Cobra dominaram as prateleiras.",
+          curiosidade:"Cada boneco vinha com um 'file card' contando a história do personagem.", hoje:"Linha cultuada, com relançamentos Classified Series.", yt:"propaganda antiga Comandos em Ação G.I. Joe comercial" },
+        { nome:"Forte Apache", orig:"Gulliver — Brasil", tipo:"Playset", emoji:"🤠", q:"Forte Apache Gulliver brinquedo",
+          historia:"Kit de bonecos de faroeste (cowboys, índios, soldados) com o forte de plástico — clássico absoluto das brincadeiras brasileiras.",
+          curiosidade:"Os bonequinhos minúsculos sumiam pela casa e apareciam anos depois no sofá.", hoje:"Nostalgia pura; reedições saem de tempos em tempos.", yt:"propaganda antiga Forte Apache Gulliver comercial" },
+        { nome:"Playmobil", orig:"Alemanha (1974)", tipo:"Playset", emoji:"🧍", q:"Playmobil",
+          historia:"Os bonequinhos sorridentes de 7,5 cm com cenários (piratas, castelo, fazenda) criados por Hans Beck viraram um dos brinquedos mais vendidos do mundo.",
+          curiosidade:"O sorriso e o formato das mãos 'em C' são iguais desde 1974.", hoje:"Segue forte, com licenças e até filme (2019).", yt:"propaganda antiga Playmobil comercial anos 90" },
+        { nome:"Max Steel", orig:"Mattel (1999)", tipo:"Action figure", emoji:"🦾", q:"Max Steel boneco Mattel",
+          historia:"O herói de esportes radicais virou linha de bonecos e desenho no fim dos anos 90/2000, muito popular no Brasil.",
+          curiosidade:"Tinha acessórios de esportes radicais e trajes intercambiáveis.", hoje:"Ganhou reboot e filme; segue lembrado pela molecada dos anos 2000.", yt:"propaganda antiga Max Steel comercial" }
+      ]},
+      { cat:"👧 Bonecas", items:[
+        { nome:"Susi", orig:"Estrela — Brasil (1966)", tipo:"Boneca", emoji:"👱‍♀️", q:"Susi boneca Estrela",
+          historia:"A boneca 'a queridinha do Brasil', rival nacional da Barbie, com guarda-roupa e acessórios acessíveis para as famílias brasileiras.",
+          curiosidade:"Teve versões temáticas a cada época (Susi manequim, Susi cabeleireira...).", hoje:"Relançada pela Estrela em edições nostálgicas.", yt:"propaganda antiga Susi Estrela boneca comercial" },
+        { nome:"Barbie", orig:"Mattel — EUA (1959)", tipo:"Boneca", emoji:"💇‍♀️", q:"Barbie doll",
+          historia:"Criada por Ruth Handler, a boneca adulta com infinitas profissões e roupas virou a mais famosa do mundo.",
+          curiosidade:"Já teve mais de 250 carreiras, de astronauta a presidente.", hoje:"O filme de 2023 (Greta Gerwig) foi fenômeno bilionário.", yt:"propaganda antiga Barbie comercial anos 90" },
+        { nome:"Polly Pocket", orig:"Bluebird/Mattel (1989)", tipo:"Boneca", emoji:"💗", q:"Polly Pocket",
+          historia:"As mini bonecas dentro de estojos-mundo que cabiam no bolso fizeram sucesso nos anos 90.",
+          curiosidade:"As primeiras eram minúsculas (risco de engolir); depois cresceram.", hoje:"Relançada e virou filme/série.", yt:"propaganda antiga Polly Pocket comercial" },
+        { nome:"Moranguinho", orig:"Strawberry Shortcake", tipo:"Boneca", emoji:"🍓", q:"Strawberry Shortcake doll", nota:"A boneca perfumada de morango e suas amigas frutinhas.", yt:"propaganda antiga Moranguinho boneca comercial" },
+        { nome:"Meu Bebê / Baby Alive", orig:"Estrela / Hasbro", tipo:"Boneca", emoji:"🍼", q:"Baby Alive doll", nota:"A boneca que comia a papinha e... precisava de troca de fralda.", yt:"propaganda antiga Baby Alive Meu Bebê comercial" }
+      ]},
+      { cat:"🎲 Jogos de tabuleiro", items:[
+        { nome:"Banco Imobiliário", orig:"Estrela — Brasil (1944)", tipo:"Jogo", emoji:"🏦", q:"Banco Imobiliário jogo Estrela",
+          historia:"A versão brasileira do Monopoly, com ruas como Avenida Brigadeiro Faria Lima. Reunia a família (e gerava brigas históricas).",
+          curiosidade:"Sempre tinha aquele que virava 'banqueiro' e mexia no dinheiro escondido.", hoje:"Segue vendendo muito, com versões temáticas (Júnior, Super).", yt:"propaganda antiga Banco Imobiliário Estrela comercial" },
+        { nome:"War", orig:"Grow — Brasil (1972)", tipo:"Jogo", emoji:"🗺️", q:"War jogo tabuleiro Grow",
+          historia:"O jogo de estratégia e conquista de territórios (versão do Risk) que durava a tarde inteira e testava amizades.",
+          curiosidade:"O objetivo secreto de 'destruir o exército azul' virou meme.", hoje:"Clássico eterno da Grow, com várias edições.", yt:"propaganda antiga War jogo Grow comercial" },
+        { nome:"Genius", orig:"Estrela — Brasil (1980s)", tipo:"Jogo eletrônico", emoji:"🔴", q:"Genius Simon jogo eletrônico Estrela",
+          historia:"O disco colorido eletrônico (versão do Simon) que tocava sequências de luz e som para você repetir de memória.",
+          curiosidade:"Aquele 'ré' de erro no fim da sequência era de partir o coração.", hoje:"Ícone dos anos 80; virou nostalgia e app.", yt:"propaganda antiga Genius Estrela comercial anos 80" },
+        { nome:"Cara a Cara", orig:"Estrela (Guess Who?)", tipo:"Jogo", emoji:"🙂", q:"Guess Who jogo Cara a Cara",
+          historia:"Adivinhar o personagem do adversário eliminando rostos com perguntas de sim/não.", curiosidade:"'Seu personagem usa óculos?' — e você derrubava metade do tabuleiro.", hoje:"Clássico que segue nas prateleiras.", yt:"propaganda antiga Cara a Cara jogo comercial" },
+        { nome:"Detetive", orig:"Estrela (Cluedo)", tipo:"Jogo", emoji:"🔍", q:"Detetive jogo Estrela Cluedo", nota:"Quem matou, com qual arma e em qual cômodo? 'Foi o Marquês, no salão, com o castiçal.'", yt:"propaganda antiga Detetive jogo Estrela comercial" },
+        { nome:"Jogo da Vida", orig:"Estrela (The Game of Life)", tipo:"Jogo", emoji:"🚗", q:"Jogo da Vida Estrela", nota:"O carrinho com pininhos: faculdade, casamento, filhos e aposentadoria.", yt:"propaganda antiga Jogo da Vida Estrela comercial" },
+        { nome:"Pega-Varetas", orig:"Clássico", tipo:"Jogo", emoji:"🥢", q:"Pega-varetas jogo", nota:"Tirar as varetas sem mexer as outras — pulso de cirurgião.", yt:"pega varetas como jogar" }
+      ]},
+      { cat:"🧱 Montar, pistas & veículos", items:[
+        { nome:"LEGO", orig:"Dinamarca (1958)", tipo:"Montar", emoji:"🧱", q:"LEGO",
+          historia:"Os blocos de encaixe dinamarqueses que permitem construir qualquer coisa — e machucam demais quando pisados descalço.",
+          curiosidade:"Duas peças de 8 pinos se combinam de mais de 900 milhões de formas.", hoje:"Maior fabricante de brinquedos do mundo, com filmes e parques.", yt:"propaganda antiga LEGO comercial anos 90" },
+        { nome:"Autorama", orig:"Estrela — Brasil", tipo:"Pista", emoji:"🏎️", q:"Autorama pista Estrela slot car",
+          historia:"A pista elétrica com carrinhos controlados por gatilho: acelerava demais e o carro voava para fora da curva.",
+          curiosidade:"O desafio era passar na curva sem sair da pista — quase impossível na potência máxima.", hoje:"Objeto de desejo retrô dos colecionadores.", yt:"propaganda antiga Autorama Estrela comercial" },
+        { nome:"Hot Wheels", orig:"Mattel (1968)", tipo:"Carrinho", emoji:"🚗", q:"Hot Wheels",
+          historia:"Os carrinhos de metal em escala 1:64 com rodas rápidas e pistas laranja com looping.",
+          curiosidade:"São produzidos mais Hot Wheels por ano do que carros reais no mundo todo.", hoje:"Coleção febre entre crianças e adultos.", yt:"propaganda antiga Hot Wheels comercial pista looping" },
+        { nome:"Ferrorama", orig:"Estrela — Brasil (1980s)", tipo:"Trem elétrico", emoji:"🚂", q:"Ferrorama Estrela trem",
+          historia:"O trenzinho elétrico sobre trilhos que dava a volta na sala; o sonho de consumo de muita criança dos anos 80.",
+          curiosidade:"O slogan 'Ferrorama, o trem que é uma máquina!' ficou na cabeça de todo mundo.", hoje:"Relançado em edições comemorativas pela Estrela.", yt:"propaganda antiga Ferrorama Estrela comercial anos 80" }
+      ]}
+    ]
+  },
+
+  "games": {
+    label:"🎮 Games",
+    desc:"dir games /p:consoles-e-portateis --insere CARTUCHO.ROM",
+    groups:[
+      { cat:"📺 Consoles", items:[
+        { nome:"Atari 2600", orig:"Atari / Polyvox no Brasil (1977)", tipo:"Console", emoji:"🕹️", q:"Atari 2600",
+          historia:"O console que popularizou o videogame em casa com cartuchos. No Brasil chegou pela Polyvox nos anos 80.",
+          curiosidade:"Jogos como Pitfall, River Raid e Enduro eram obsessão. O joystick preto de um botão é ícone.", hoje:"Peça de museu e febre retrô; a Atari relançou o VCS.", yt:"propaganda antiga Atari 2600 Polyvox comercial" },
+        { nome:"Master System", orig:"Sega / Tectoy — Brasil (1989)", tipo:"Console", emoji:"🎮", q:"Sega Master System",
+          historia:"A Tectoy trouxe o console da Sega ao Brasil e ele fez MUITO mais sucesso aqui do que no resto do mundo.",
+          curiosidade:"Vinha com Alex Kidd na memória; a Tectoy fabrica versões dele até hoje.", hoje:"O Brasil é o país onde o Master System mais sobreviveu.", yt:"propaganda antiga Master System Tectoy comercial Alex Kidd" },
+        { nome:"Mega Drive", orig:"Sega / Tectoy (1990)", tipo:"Console", emoji:"🦔", q:"Sega Mega Drive Genesis",
+          historia:"O console 16-bits da Sega, casa do Sonic, que travou a 'guerra dos consoles' contra o Super Nintendo.",
+          curiosidade:"'Genesis does what Nintendon't' foi um dos marketings mais agressivos da história.", hoje:"A Tectoy relançou o Mega Drive no Brasil recentemente.", yt:"propaganda antiga Mega Drive Tectoy comercial Sonic" },
+        { nome:"Super Nintendo", orig:"Nintendo (1990)", tipo:"Console", emoji:"🍄", q:"Super Nintendo SNES",
+          historia:"O 16-bits da Nintendo, com Super Mario World, Donkey Kong Country e Zelda — biblioteca lendária.",
+          curiosidade:"O chip gráfico permitia efeitos 'Mode 7' que simulavam 3D (F-Zero, Mario Kart).", hoje:"Um dos consoles mais amados de todos os tempos.", yt:"propaganda antiga Super Nintendo comercial anos 90" },
+        { nome:"Nintendinho (NES/Famiclones)", orig:"Nintendo / clones (Phantom, Dynavision)", tipo:"Console", emoji:"👾", q:"Nintendo Entertainment System NES",
+          historia:"O 8-bits que ressuscitou os videogames após o crash de 1983. No Brasil, os clones (Phantom System, Dynavision) eram onipresentes.",
+          curiosidade:"Assoprar o cartucho para 'funcionar' virou ritual sagrado (e não adiantava nada).", hoje:"Mario, Contra e Duck Hunt são eternos.", yt:"propaganda antiga Nintendinho Phantom System comercial" },
+        { nome:"PlayStation", orig:"Sony (1994)", tipo:"Console", emoji:"🎯", q:"Sony PlayStation console 1994",
+          historia:"O console da Sony que levou os games ao CD e ao 3D, com Crash, Final Fantasy VII e Resident Evil.",
+          curiosidade:"No Brasil dos anos 90/2000, alugar PS1 na locadora era programa de fim de semana.", hoje:"Deu origem à maior marca de consoles da atualidade.", yt:"propaganda antiga PlayStation 1 comercial anos 90" }
+      ]},
+      { cat:"🎒 Portáteis & bichinhos virtuais", items:[
+        { nome:"Game Boy", orig:"Nintendo (1989)", tipo:"Portátil", emoji:"🟩", q:"Nintendo Game Boy",
+          historia:"O portátil verde-acinzentado que colocou Tetris e Pokémon no bolso de todo mundo.",
+          curiosidade:"Sobreviveu a quedas absurdas; um exemplar queimado na Guerra do Golfo ainda funciona num museu da Nintendo.", hoje:"Ícone do design de games portáteis.", yt:"propaganda antiga Game Boy comercial Tetris" },
+        { nome:"Tamagotchi", orig:"Bandai — Japão (1996)", tipo:"Bichinho virtual", emoji:"🥚", q:"Tamagotchi",
+          historia:"O bichinho virtual num chaveiro que você tinha que alimentar, limpar e cuidar — ou ele morria.",
+          curiosidade:"Foi banido de muitas escolas porque as crianças paravam a aula para cuidar do bicho.", hoje:"Voltou à moda com relançamentos e versão colorida.", yt:"propaganda antiga Tamagotchi comercial anos 90" },
+        { nome:"Tazos / Taz-Bilas", orig:"Elma Chips (1995)", tipo:"Colecionável", emoji:"⭕", q:"Tazos Elma Chips",
+          historia:"Os discos de plástico que vinham dentro dos salgadinhos (Looney Tunes, Pokémon) e viraram febre nacional de troca e disputa.",
+          curiosidade:"Você comprava Elma Chips só pelo Tazo e às vezes nem comia o salgadinho.", hoje:"Nostalgia absoluta; edições voltam de tempos em tempos.", yt:"propaganda antiga Tazos Elma Chips comercial" },
+        { nome:"Ioiô Coca-Cola", orig:"Russell / Coca-Cola (1998)", tipo:"Brinquedo", emoji:"🪀", q:"ioiô Coca-Cola Russell",
+          historia:"A febre nacional do ioiô profissional em 1998, com campeonatos, manobras como 'passeio do cachorrinho' e o modelo transparente com água.",
+          curiosidade:"Todo mundo queria o ioiô com rolamento que 'dormia' mais tempo.", hoje:"Símbolo do recreio dos anos 90.", yt:"propaganda antiga ioiô Coca-Cola Russell campeonato 1998" },
+        { nome:"Beyblade", orig:"Takara — Japão (1999)", tipo:"Pião", emoji:"🌀", q:"Beyblade",
+          historia:"Os piões de batalha com launcher que giravam numa arena — 'Bora lá, Beyblade!' — hit da virada dos anos 2000.",
+          curiosidade:"Você montava e customizava as peças do pião para batalhar.", hoje:"A franquia segue com novas gerações de piões.", yt:"propaganda antiga Beyblade comercial anos 2000" }
+      ]}
+    ]
+  },
+
+  "rua": {
+    label:"🏘️ Brincadeiras de rua",
+    desc:"dir brincadeiras /p:rua --sai PARA-A-CALCADA.EXE",
+    groups:[
+      { cat:"🏘️ Antes de existir tela, existia a rua", items:[
+        { nome:"Bolinha de gude (Bila)", orig:"Brincadeira secular", tipo:"Brincadeira", emoji:"🔵", q:"bolinha de gude", nota:"Acertar a bolinha do outro e levar pra casa — o buraco no chão era o alvo.", yt:"como jogar bolinha de gude regras" },
+        { nome:"Pião", orig:"Brincadeira secular", tipo:"Brincadeira", emoji:"🎯", q:"pião brinquedo madeira", nota:"Enrolar o fieira, arremessar e fazer 'dormir' na palma da mão.", yt:"como rodar pião de madeira" },
+        { nome:"Pipa / Papagaio / Raia", orig:"Brincadeira secular", tipo:"Brincadeira", emoji:"🪁", q:"pipa papagaio brinquedo", nota:"Soltar pipa no campo, com cerol proibido; a disputa era 'cortar' a linha do rival.", yt:"como fazer pipa passo a passo" },
+        { nome:"Bafo (figurinhas/tampinhas)", orig:"Recreio brasileiro", tipo:"Brincadeira", emoji:"🃏", q:"bafo figurinhas brincadeira", nota:"Bater a mão no chão pra virar as figurinhas e ganhá-las do adversário.", yt:"bafo de figurinhas como jogar" },
+        { nome:"Amarelinha", orig:"Brincadeira secular", tipo:"Brincadeira", emoji:"🔢", q:"amarelinha brincadeira", nota:"Desenhar o céu-e-inferno no chão com giz e pular num pé só.", yt:"amarelinha como brincar" },
+        { nome:"Elástico", orig:"Recreio anos 80/90", tipo:"Brincadeira", emoji:"🧶", q:"jogo do elástico brincadeira", nota:"Pular sequências no elástico esticado nas pernas de duas amigas.", yt:"brincadeira do elástico como pular" },
+        { nome:"Queimada (Baleado/Carimba)", orig:"Recreio brasileiro", tipo:"Brincadeira", emoji:"🤾", q:"queimada jogo brincadeira", nota:"Dois times, uma bola: acertou, tá queimado e vai pro 'cemitério'.", yt:"queimada jogo regras como jogar" },
+        { nome:"Taco (Bete-ombro)", orig:"Rua brasileira", tipo:"Brincadeira", emoji:"🏏", q:"jogo taco bets brincadeira rua", nota:"Duas casinhas, tacos e uma bolinha — clássico das ruas sem movimento.", yt:"jogo de taco betes como jogar" },
+        { nome:"Peteca", orig:"Brincadeira indígena/brasileira", tipo:"Brincadeira", emoji:"🪶", q:"peteca brinquedo", nota:"Bater a peteca com a mão sem deixar cair — herança indígena.", yt:"peteca como jogar" },
+        { nome:"Cinco Marias (Jogo das pedrinhas)", orig:"Brincadeira secular", tipo:"Brincadeira", emoji:"🪨", q:"cinco marias jogo pedrinhas", nota:"Jogar a pedrinha pra cima e pegar as do chão antes de aparar.", yt:"cinco marias como jogar" }
+      ]}
+    ]
+  },
+
+  "doces": {
+    label:"🍫 Doces",
+    desc:"dir doces /p:chocolates-e-balas --abre POTE-DE-GULOSEIMAS.EXE",
+    groups:[
+      { cat:"🍫 Chocolates & bombons", items:[
+        { nome:"Sonho de Valsa", orig:"Lacta — Brasil (1938)", tipo:"Bombom", emoji:"🌹", q:"Sonho de Valsa Lacta",
+          historia:"O bombom de wafer com creme de castanha e a embalagem rosa com o casal dançando — presença obrigatória em festa e caixa de bombom.",
+          curiosidade:"A eterna 'guerra': Sonho de Valsa x Ouro Branco. Cada um tem seu time.", hoje:"Um dos bombons mais vendidos do Brasil, hoje da Mondelez.", yt:"propaganda antiga Sonho de Valsa Lacta comercial" },
+        { nome:"Chokito", orig:"Nestlé — Brasil (1983)", tipo:"Barra", emoji:"🟫", q:"Chokito Nestlé",
+          historia:"A barra de caramelo coberta de chocolate com flocos crocantes de arroz — textura inconfundível.",
+          curiosidade:"O nome e a embalagem laranja são um ícone dos anos 80/90.", hoje:"Continua firme nas prateleiras.", yt:"propaganda antiga Chokito Nestlé comercial" },
+        { nome:"Baton", orig:"Garoto — Brasil (1961)", tipo:"Barrinha", emoji:"🍫", q:"Baton Garoto chocolate",
+          historia:"A barrinha pequena de chocolate ao leite da Garoto, aquela que se comprava com o troco na padaria.",
+          curiosidade:"Virou símbolo de campanhas de arrecadação (o 'Baton solidário').", hoje:"Segue sendo a barrinha mais popular do país.", yt:"propaganda antiga Baton Garoto comercial" },
+        { nome:"Diamante Negro", orig:"Lacta — Brasil (1938)", tipo:"Barra", emoji:"💎", q:"Diamante Negro Lacta chocolate",
+          historia:"Chocolate ao leite com crocantes crocantes, criado em 1938 e batizado em homenagem a um jogador de futebol brasileiro.",
+          curiosidade:"O nome veio do apelido do craque Leônidas da Silva, o 'Diamante Negro'.", hoje:"Clássico da Lacta até hoje.", yt:"propaganda antiga Diamante Negro Lacta comercial" },
+        { nome:"Prestígio", orig:"Nestlé — Brasil (1954)", tipo:"Barra", emoji:"🥥", q:"Prestígio Nestlé chocolate coco",
+          historia:"Chocolate com recheio de coco, um dos mais antigos e amados do Brasil.",
+          curiosidade:"Divide opiniões como poucos: ou você ama, ou odeia coco.", hoje:"Permanece um campeão de vendas.", yt:"propaganda antiga Prestígio Nestlé comercial" },
+        { nome:"Bis", orig:"Lacta — Brasil (1942)", tipo:"Wafer", emoji:"🟪", q:"Bis Lacta chocolate wafer",
+          historia:"O wafer folheado coberto de chocolate, embrulhado unidade por unidade na fininha embalagem prateada.",
+          curiosidade:"Impossível comer só um — daí o nome 'Bis'.", hoje:"Tem versões (branco, xtra, oreo) e segue febre.", yt:"propaganda antiga Bis Lacta comercial" },
+        { nome:"Kinder Ovo", orig:"Ferrero — Itália (1974)", tipo:"Chocolate", emoji:"🥚", q:"Kinder Ovo Surpresa",
+          historia:"O ovo de chocolate com uma cápsula amarela e um brinquedinho de montar dentro — a surpresa era metade da graça.",
+          curiosidade:"Alguns brinquedos viraram itens de colecionador raros.", hoje:"Continua encantando (e a surpresa continua sendo o brinquedo).", yt:"propaganda antiga Kinder Ovo comercial" }
+      ]},
+      { cat:"🍬 Balas, chicletes & pirulitos", items:[
+        { nome:"Bubbaloo", orig:"Adams — (1980s)", tipo:"Chiclete", emoji:"💧", q:"Bubbaloo chiclete",
+          historia:"O chiclete recheado com líquido que 'explodia' na boca; sabor tutti-frutti e morango faziam a cabeça da criançada.",
+          curiosidade:"O gatinho da embalagem, o Bubbaloo, era mascote querido.", hoje:"Ainda vendido, com o mesmo recheio líquido.", yt:"propaganda antiga Bubbaloo chiclete comercial" },
+        { nome:"Pirulito Pop / Plá", orig:"Riclan / Florestal — Brasil", tipo:"Pirulito", emoji:"🍭", q:"pirulito Pop Riclan",
+          historia:"O pirulito com chiclete no meio (Pop) e o pirulito plano (Plá) eram a compra certa na banca ou padaria.",
+          curiosidade:"A disputa era chegar logo ao chiclete sem morder o pirulito.", hoje:"Clássicos que seguem baratinhos e populares.", yt:"propaganda antiga pirulito Pop Plá comercial" },
+        { nome:"Bala Juquinha", orig:"Florestal — Brasil", tipo:"Bala", emoji:"🍌", q:"bala Juquinha Florestal banana", nota:"A balinha de banana com o menininho na embalagem — de chupar e mascar.", yt:"propaganda antiga bala Juquinha comercial" },
+        { nome:"Ping Pong", orig:"Chiclete com figurinha", tipo:"Chiclete", emoji:"🎴", q:"chiclete Ping Pong figurinha", nota:"O chiclete quadradinho que vinha com uma figurinha/tatuagem dentro.", yt:"propaganda antiga chiclete Ping Pong comercial" },
+        { nome:"Halls", orig:"Pastilha", tipo:"Bala", emoji:"❄️", q:"Halls pastilha", nota:"A pastilha refrescante que 'destrancava' o nariz — sabor extra forte era desafio.", yt:"propaganda antiga Halls comercial" },
+        { nome:"Fini (minhocas & dentaduras)", orig:"Fini — (anos 90)", tipo:"Bala de goma", emoji:"🐛", q:"Fini balas gelatina minhocas", nota:"As minhocas e dentaduras de goma que dominaram as festas e mercadinhos.", yt:"propaganda antiga Fini balas comercial" }
+      ]}
+    ]
+  },
+
+  "salgados": {
+    label:"🍟 Salgadinhos & bolachas",
+    desc:"dir salgadinhos /p:elma-chips-e-bolachas --rasga PACOTE.ZIP",
+    groups:[
+      { cat:"🍟 Salgadinhos", items:[
+        { nome:"Fandangos", orig:"Elma Chips — Brasil (1970s)", tipo:"Salgadinho", emoji:"🌽", q:"Fandangos Elma Chips",
+          historia:"O salgadinho de milho sabor queijo (e presunto) que é um dos mais antigos e queridos do Brasil.",
+          curiosidade:"Dava aquele 'dedo laranja' que denunciava quem comeu o pacote.", hoje:"Clássico absoluto da Elma Chips.", yt:"propaganda antiga Fandangos Elma Chips comercial" },
+        { nome:"Cheetos", orig:"Elma Chips", tipo:"Salgadinho", emoji:"🧀", q:"Cheetos salgadinho",
+          historia:"O salgadinho de queijo com o guepardo Chester como mascote; formatos bolinha e onda.",
+          curiosidade:"O Chester dizia que 'é chester, não é fácil'.", hoje:"Onipresente nas festas e lanches.", yt:"propaganda antiga Cheetos Chester comercial" },
+        { nome:"Baconzitos", orig:"Elma Chips", tipo:"Salgadinho", emoji:"🥓", q:"Baconzitos Elma Chips", nota:"Os aros sabor bacon que ninguém resistia no aniversário.", yt:"propaganda antiga Baconzitos comercial" },
+        { nome:"Fofura", orig:"Elma Chips", tipo:"Salgadinho", emoji:"☁️", q:"Fofura salgadinho Elma Chips", nota:"O salgadinho leve e fofo sabor presunto, com o gatinho na embalagem.", yt:"propaganda antiga Fofura salgadinho comercial" },
+        { nome:"Ruffles", orig:"Elma Chips", tipo:"Batata", emoji:"🥔", q:"Ruffles batata", nota:"A batata ondulada 'com aquela ondulação' — sabor original e cebola/salsa.", yt:"propaganda antiga Ruffles comercial" }
+      ]},
+      { cat:"🍪 Bolachas & biscoitos", items:[
+        { nome:"Negresco", orig:"Nestlé — Brasil", tipo:"Biscoito", emoji:"⚫", q:"Negresco biscoito Nestlé",
+          historia:"O biscoito recheado preto e branco (a versão brasileira do Oreo) que se desmontava para lamber o recheio.",
+          curiosidade:"O ritual: abrir, lamber o recheio, mergulhar no leite.", hoje:"Um dos recheados mais vendidos do país.", yt:"propaganda antiga Negresco Nestlé comercial" },
+        { nome:"Passatempo", orig:"Nestlé — Brasil", tipo:"Biscoito", emoji:"🐘", q:"Passatempo biscoito Nestlé", nota:"O recheado com piadinhas e passatempos na embalagem.", yt:"propaganda antiga Passatempo Nestlé comercial" },
+        { nome:"Trakinas", orig:"Nabisco/Lacta", tipo:"Biscoito", emoji:"😜", q:"Trakinas biscoito", nota:"'Trakinas quebra pra dois?' — o recheado que dividia (ou não) com o amigo.", yt:"propaganda antiga Trakinas comercial" },
+        { nome:"Bono", orig:"Nestlé — Brasil", tipo:"Biscoito", emoji:"🍫", q:"Bono biscoito Nestlé", nota:"O biscoito amanteigado recheado, campeão da merenda.", yt:"propaganda antiga Bono Nestlé comercial" },
+        { nome:"Biscoito Globo", orig:"Rio de Janeiro", tipo:"Biscoito", emoji:"⭕", q:"Biscoito Globo", nota:"O biscoito de polvilho vendido na praia carioca, no saco pendurado no braço do vendedor.", yt:"biscoito Globo praia história" }
+      ]}
+    ]
+  },
+
+  "bebidas": {
+    label:"🥤 Bebidas",
+    desc:"dir bebidas /p:achocolatados-e-refrescos --agita GARRAFA.SYS",
+    groups:[
+      { cat:"🥛 Achocolatados & refrescos", items:[
+        { nome:"Toddynho", orig:"Quaker — Brasil (1980s)", tipo:"Achocolatado", emoji:"🥤", q:"Toddynho",
+          historia:"O achocolatado pronto na caixinha com canudo — o rei da lancheira e da festa de aniversário.",
+          curiosidade:"O truque era apertar a caixinha e fazer o achocolatado 'jorrar' pelo canudo.", hoje:"Segue líder de mercado.", yt:"propaganda antiga Toddynho comercial anos 90" },
+        { nome:"Nescau", orig:"Nestlé (1932/Brasil)", tipo:"Achocolatado", emoji:"🍫", q:"Nescau Nestlé",
+          historia:"O pó achocolatado que 'dá energia' — do café da manhã ao copo com leite gelado.",
+          curiosidade:"A dose extra jogada no leite (e o pozinho que boiava) era regra.", hoje:"Ícone com o slogan 'Nescau, energia que dá gosto'.", yt:"propaganda antiga Nescau comercial anos 90" },
+        { nome:"Tang / Fresh / Q-Suco", orig:"Refresco em pó", tipo:"Suco em pó", emoji:"🧃", q:"Tang refresco em pó",
+          historia:"O envelope de pó que virava suco na jarra — sabores laranja, uva, maracujá — barato e rendia litros.",
+          curiosidade:"Dava para comer o pó puro no dedo (e ficar com a língua colorida).", hoje:"Ainda popular pelo custo-benefício.", yt:"propaganda antiga Tang refresco comercial" },
+        { nome:"Guaraná Antarctica", orig:"Brasil (1921)", tipo:"Refrigerante", emoji:"🥤", q:"Guaraná Antarctica",
+          historia:"O refrigerante de guaraná, sabor genuinamente brasileiro, presença certa no almoço de domingo.",
+          curiosidade:"'O original' é orgulho nacional e patrocina a Seleção.", hoje:"Um dos refrigerantes mais vendidos do Brasil.", yt:"propaganda antiga Guaraná Antarctica comercial" },
+        { nome:"Danoninho", orig:"Danone — Brasil", tipo:"Iogurte", emoji:"🍮", q:"Danoninho Danone",
+          historia:"O petit suisse rosa que 'vale por um bifinho' — sobremesa e lanche da criançada.",
+          curiosidade:"Tomar direto do potinho lambendo a tampa era obrigatório.", hoje:"Segue campeão entre as crianças.", yt:"propaganda antiga Danoninho vale por um bifinho comercial" },
+        { nome:"Yakult", orig:"Japão / Brasil", tipo:"Bebida láctea", emoji:"🧫", q:"Yakult",
+          historia:"O leite fermentado no frasquinho pequeno, tomado de um gole só, cheio de lactobacilos.",
+          curiosidade:"Todo mundo já tomou dois ou três de uma vez 'pra valer a pena'.", hoje:"Continua idêntico há décadas.", yt:"propaganda antiga Yakult comercial" }
+      ]}
+    ]
+  },
+
+  "sorvetes": {
+    label:"🍦 Sorvetes",
+    desc:"dir sorvetes /p:kibon-e-geladinhos --abre FREEZER.EXE",
+    groups:[
+      { cat:"🍦 Picolés & sorvetes (Kibon)", items:[
+        { nome:"Chicabon", orig:"Kibon — Brasil", tipo:"Picolé", emoji:"🍫", q:"Chicabon Kibon picolé",
+          historia:"O picolé de creme coberto com chocolate crocante — o barulho da casquinha quebrando era parte da experiência.",
+          curiosidade:"Rival eterno do Eskimó; cada um tinha seu preferido.", hoje:"Clássico da Kibon que atravessa gerações.", yt:"propaganda antiga Chicabon Kibon comercial" },
+        { nome:"Tortuguita", orig:"Kibon — Brasil", tipo:"Picolé", emoji:"🐢", q:"Tortuguita Kibon sorvete",
+          historia:"O picolé em formato de tartaruga com sabores de baunilha, chocolate e morango.",
+          curiosidade:"O formato de tartaruga era a marca registrada da meninada.", hoje:"Ícone nostálgico da Kibon.", yt:"propaganda antiga Tortuguita Kibon comercial" },
+        { nome:"Eskimó", orig:"Kibon — Brasil", tipo:"Picolé", emoji:"🥶", q:"Eskimó Kibon sorvete", nota:"O picolé de creme com cobertura, rival histórico do Chicabon.", yt:"propaganda antiga Eskimó Kibon comercial" },
+        { nome:"Sistema Solar", orig:"Kibon — Brasil (1990s)", tipo:"Picolé", emoji:"🪐", q:"Sistema Solar sorvete Kibon", nota:"O picolé colorido com bola de chiclete no palito — puro anos 90.", yt:"propaganda antiga Sistema Solar Kibon comercial" },
+        { nome:"Fruttare", orig:"Kibon", tipo:"Picolé", emoji:"🍓", q:"Fruttare Kibon picolé fruta", nota:"O picolé de fruta 'de verdade', mais levinho.", yt:"propaganda antiga Fruttare comercial" },
+        { nome:"Cornetto", orig:"Kibon", tipo:"Casquinha", emoji:"🍦", q:"Cornetto sorvete casquinha", nota:"A casquinha com sorvete e a pontinha de chocolate no fundo, o melhor pedaço.", yt:"propaganda antiga Cornetto comercial" },
+        { nome:"Sacolé / Geladinho / Dindin", orig:"Caseiro — Brasil", tipo:"Geladinho", emoji:"🧊", q:"sacolé geladinho dindin caseiro",
+          historia:"O suco congelado no saquinho plástico, vendido na casa da vizinha — de morango, uva, leite ninho, chocolate.",
+          curiosidade:"Tem mil nomes pelo Brasil: sacolé, geladinho, dindin, chup-chup, laranjinha.", hoje:"Segue sendo a renda extra e a delícia barata do verão.", yt:"como fazer sacolé geladinho dindin receita" }
+      ]}
+    ]
+  }
+};
+
+/* ================= Render ================= */
+const tabsEl = document.getElementById('tabs');
+const contentEl = document.getElementById('content');
+const descEl = document.getElementById('decadeDesc');
+const catIndexEl = document.getElementById('catIndex');
+const order = ["brinquedos","games","rua","doces","salgados","bebidas","sorvetes"];
+let current = "brinquedos";
+
+function ytUrl(q){ return "https://www.youtube.com/results?search_query=" + encodeURIComponent(q); }
+function slug(s){ return s.replace(/[^a-z0-9]+/gi,'-').toLowerCase(); }
+
+function renderTabs(){
+  tabsEl.innerHTML = "";
+  order.forEach(k=>{
+    const d = document.createElement('div');
+    d.className = "tab" + (k===current ? " active":"");
+    d.textContent = SECTIONS[k].label;
+    d.onclick = ()=>{ current=k; renderTabs(); renderContent(); document.getElementById('tabs').scrollIntoView({behavior:'smooth'}); };
+    tabsEl.appendChild(d);
+  });
+}
+
+function cardHTML(it){
+  const q = it.q || it.nome;
+  const yt = it.yt || ("propaganda antiga " + it.nome + " comercial");
+  const badge = it.ano || "retrô";
+  const retro = it.historia ? `
+        <dl class="retro">
+          <dt>📜 A história</dt><dd>${it.historia}</dd>
+          ${it.curiosidade?`<dt>💡 Curiosidade</dt><dd>${it.curiosidade}</dd>`:``}
+          ${it.hoje?`<dt>📍 Hoje</dt><dd>${it.hoje}</dd>`:``}
+        </dl>` : (it.nota ? `<div class="nota">${it.nota}</div>` : "");
+  return `
+    <div class="card bevel-out">
+      <div class="card-tb"><span class="nm">${it.nome}</span><span class="yr">${badge}</span></div>
+      <div class="card-body">
+        <div class="poster loading" data-q="${encodeURIComponent(q)}">
+          <div class="ph"><span>${it.emoji||"🧸"}</span><span class="nm2">${it.nome}</span></div>
+        </div>
+        <span class="card-type">${it.tipo}</span>
+        <h3>${it.nome}</h3>
+        <div class="orig">${it.orig}</div>
+        ${retro}
+        <a class="yt-btn" href="${ytUrl(yt)}" target="_blank" rel="noopener">▶ VER PROPAGANDA ANTIGA</a>
+      </div>
+    </div>`;
+}
+
+function renderContent(){
+  const sec = SECTIONS[current];
+  descEl.textContent = sec.desc;
+  catIndexEl.innerHTML = sec.groups.map(g=>`<a href="#cat-${slug(g.cat)}">${g.cat} <b>(${g.items.length})</b></a>`).join("");
+  contentEl.innerHTML = sec.groups.map(g=>{
+    const cards = g.items.map(cardHTML).join("");
+    return `<div class="cat-header" id="cat-${slug(g.cat)}"><span>${g.cat}</span><span class="cnt">${g.items.length} itens</span></div><div class="cards">${cards}</div>`;
+  }).join("");
+  contentEl.querySelectorAll('.poster[data-q]').forEach(p=>imgObserver.observe(p));
+}
+
+/* Imagens da Wikipédia (lazy, fallback) */
+const imgCache = {};
+async function fetchWikiThumb(query){
+  if(imgCache[query]!==undefined) return imgCache[query];
+  const endpoints = ["https://pt.wikipedia.org/w/api.php","https://en.wikipedia.org/w/api.php"];
+  for(const base of endpoints){
+    try{
+      const url = base + "?action=query&format=json&origin=*&generator=search&gsrlimit=1"
+        + "&gsrsearch=" + encodeURIComponent(query)
+        + "&prop=pageimages&piprop=thumbnail&pithumbsize=420&pilicense=any";
+      const r = await fetch(url); const j = await r.json();
+      const pages = j.query && j.query.pages;
+      if(pages){ const p = Object.values(pages)[0];
+        if(p && p.thumbnail && p.thumbnail.source){ imgCache[query]=p.thumbnail.source; return imgCache[query]; } }
+    }catch(e){}
+  }
+  imgCache[query]=null; return null;
+}
+const imgObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(async (en)=>{
+    if(!en.isIntersecting) return;
+    const el = en.target; imgObserver.unobserve(el);
+    const q = decodeURIComponent(el.getAttribute('data-q'));
+    const src = await fetchWikiThumb(q);
+    el.classList.remove('loading');
+    if(src){ const img = new Image(); img.onload=()=>{ el.innerHTML=""; el.appendChild(img); }; img.onerror=()=>{}; img.alt=q; img.src=src; }
+  });
+},{ rootMargin:"300px" });
+
+/* Menu Iniciar */
+const startBtn = document.getElementById('startBtn');
+const startMenu = document.getElementById('startMenu');
+startBtn.onclick = (e)=>{ e.stopPropagation(); startMenu.classList.toggle('open'); };
+document.addEventListener('click', ()=> startMenu.classList.remove('open'));
+startMenu.querySelectorAll('[data-goto]').forEach(li=>{
+  li.onclick = ()=>{ current = li.getAttribute('data-goto'); renderTabs(); renderContent();
+    startMenu.classList.remove('open'); document.getElementById('tabs').scrollIntoView({behavior:'smooth'}); };
+});
+
+/* Relógio */
+function tick(){ const n=new Date(); document.getElementById('clock').textContent = String(n.getHours()).padStart(2,'0')+":"+String(n.getMinutes()).padStart(2,'0'); }
+setInterval(tick,1000); tick();
+(function(){ const el=document.getElementById('counter'); el.textContent=String(13370+Math.floor(Math.random()*90)).padStart(8,'0'); })();
+
+renderTabs(); renderContent();
+</script>
+</body>
+</html>
