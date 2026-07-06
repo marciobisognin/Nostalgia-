@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NostalgiaOS 95 :: Desenhos e Séries dos anos 70, 80, 90 e 2000</title>
-<meta name="description" content="Um retrocesso nostálgico estilo desktop dos anos 90 com desenhos animados e séries das décadas de 70, 80, 90 e 2000. Como foram criados, como terminaram e por onde andam os atores e criadores.">
+<meta name="description" content="Um retrocesso nostálgico estilo desktop dos anos 90 com desenhos animados e séries das décadas de 70, 80, 90 e 2000, organizados por categoria. Como foram criados, como terminaram e por onde andam os atores e criadores.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,16 +25,13 @@
     font-size: 13px;
     color: #000;
     background: #008080;
-    /* Teal com padrão pontilhado clássico do Windows */
-    background-image:
-      radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size: 4px 4px;
     min-height: 100%;
-    padding-bottom: 46px; /* espaço para a barra de tarefas */
+    padding-bottom: 46px;
     overflow-x: hidden;
   }
 
-  /* ====== Bordas biseladas 3D estilo Win95 ====== */
   .bevel-out {
     border: 2px solid;
     border-color: var(--light) var(--shadow) var(--shadow) var(--light);
@@ -46,76 +43,39 @@
     box-shadow: inset 1px 1px 0 var(--dark), inset -1px -1px 0 var(--gray);
   }
 
-  /* ====== Barra de menu superior ====== */
+  /* Marquee */
   .marquee-bar{
-    background: var(--navy);
-    color: #fff;
-    padding: 3px 0;
-    font-weight: bold;
-    letter-spacing: 1px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-bottom: 2px solid #000;
+    background: var(--navy); color: #fff; padding: 3px 0; font-weight: bold;
+    letter-spacing: 1px; overflow: hidden; white-space: nowrap; border-bottom: 2px solid #000;
   }
-  .marquee-bar span{
-    display: inline-block;
-    padding-left: 100%;
-    animation: scroll 24s linear infinite;
-  }
-  @keyframes scroll{
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-  }
+  .marquee-bar span{ display: inline-block; padding-left: 100%; animation: scroll 26s linear infinite; }
+  @keyframes scroll{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
 
-  /* ====== Janela principal ====== */
-  .window{
-    max-width: 1100px;
-    margin: 18px auto;
-    background: var(--gray);
-    padding: 3px;
-  }
+  /* Janela */
+  .window{ max-width: 1180px; margin: 18px auto; background: var(--gray); padding: 3px; }
   .title-bar{
-    background: linear-gradient(90deg, var(--navy), #1084d0);
-    color: #fff;
-    padding: 3px 4px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
+    background: linear-gradient(90deg, var(--navy), #1084d0); color: #fff; padding: 3px 4px;
+    display: flex; align-items: center; justify-content: space-between; font-weight: bold;
   }
   .title-bar .t-left{ display:flex; align-items:center; gap:6px; }
   .title-bar .t-icon{
-    background:#fff; color:var(--navy); font-size:11px;
-    width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center;
-    border:1px solid #000;
+    background:#fff; color:var(--navy); font-size:11px; width:16px; height:16px;
+    display:inline-flex; align-items:center; justify-content:center; border:1px solid #000;
   }
   .title-buttons{ display:flex; gap:2px; }
   .title-buttons button{
-    width: 18px; height: 18px;
-    background: var(--gray);
-    font-size: 10px; font-weight: bold;
-    line-height: 1;
-    cursor: default;
-    border: 2px solid;
+    width: 18px; height: 18px; background: var(--gray); font-size: 10px; font-weight: bold;
+    line-height: 1; cursor: default; border: 2px solid;
     border-color: var(--light) var(--shadow) var(--shadow) var(--light);
   }
   .window-body{ padding: 12px; }
 
-  /* ====== Cabeçalho / hero ====== */
+  /* Hero */
   .hero{
-    text-align:center;
-    padding: 16px 10px;
-    margin-bottom: 12px;
-    background:
-      repeating-linear-gradient(45deg,#000080 0 12px,#0a0a5a 12px 24px);
-    color:#fff;
+    text-align:center; padding: 16px 10px; margin-bottom: 12px;
+    background: repeating-linear-gradient(45deg,#000080 0 12px,#0a0a5a 12px 24px); color:#fff;
   }
-  .hero h1{
-    font-size: 30px;
-    text-shadow: 3px 3px 0 #ff00ff, 6px 6px 0 #00ffff;
-    letter-spacing: 1px;
-    line-height:1.2;
-  }
+  .hero h1{ font-size: 30px; text-shadow: 3px 3px 0 #ff00ff, 6px 6px 0 #00ffff; letter-spacing: 1px; line-height:1.2; }
   .hero .blink{ animation: blink 1s steps(2,start) infinite; color: var(--yellow); }
   @keyframes blink{ to { visibility: hidden; } }
   .hero p{ margin-top:10px; font-size:13px; }
@@ -124,159 +84,137 @@
     padding:4px 10px; font-weight:bold; border:2px dashed #ffff00; font-size:12px;
   }
 
-  /* ====== Aviso links ====== */
+  /* Aviso */
   .notice{
-    background:#ffffcc; color:#000;
-    border:2px solid #000; padding:8px 10px; margin-bottom:14px; font-size:12px;
-    display:flex; gap:10px; align-items:flex-start;
+    background:#ffffcc; color:#000; border:2px solid #000; padding:8px 10px; margin-bottom:14px;
+    font-size:12px; display:flex; gap:10px; align-items:flex-start;
   }
   .notice .ico{ font-size:20px; }
 
-  /* ====== Abas de década ====== */
-  .tabs{
-    display:flex; flex-wrap:wrap; gap:4px; margin-bottom:0; padding: 0 4px;
-  }
+  /* Abas */
+  .tabs{ display:flex; flex-wrap:wrap; gap:4px; margin-bottom:0; padding: 0 4px; }
   .tab{
-    background: var(--gray); padding:6px 16px; cursor:pointer; font-weight:bold;
+    background: var(--gray); padding:6px 14px; cursor:pointer; font-weight:bold;
     border:2px solid; border-bottom:none;
     border-color: var(--light) var(--shadow) transparent var(--light);
     position:relative; top:2px; font-size:13px;
   }
-  .tab.active{
-    background:#d8d8d8; top:0; padding-bottom:8px; z-index:2;
-  }
+  .tab.active{ background:#d8d8d8; top:0; padding-bottom:8px; z-index:2; }
 
   .tab-panel-frame{ background:#d8d8d8; padding:14px; }
-
   .decade-desc{
     background:#000; color:#00ff00; font-family:"Courier New",monospace;
-    padding:8px 10px; margin-bottom:14px; font-size:12px; border:2px inset #666;
+    padding:8px 10px; margin-bottom:6px; font-size:12px; border:2px inset #666;
   }
   .decade-desc::before{ content:"C:\\NOSTALGIA> "; color:#888; }
 
-  /* ====== Grade de cards ====== */
-  .cards{
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
+  /* Índice de categorias */
+  .cat-index{ display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 4px; }
+  .cat-index a{
+    font-size:11px; background:var(--gray); color:#000; text-decoration:none; padding:3px 8px;
+    border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light);
   }
-  .card{
-    background: var(--gray);
-    padding: 3px;
-    display:flex; flex-direction:column;
+  .cat-index a:active{ border-color:var(--shadow) var(--light) var(--light) var(--shadow); }
+
+  /* Cabeçalho de categoria */
+  .cat-header{
+    margin:18px 0 10px; padding:5px 10px; font-weight:bold; font-size:15px; color:#fff;
+    background: linear-gradient(90deg,#000080,#1084d0);
+    display:flex; align-items:center; justify-content:space-between;
+    border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light);
+    scroll-margin-top: 10px;
   }
+  .cat-header .cnt{ background:var(--yellow); color:#000; font-size:11px; padding:0 6px; }
+
+  /* Grade */
+  .cards{ display:grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+  .card{ background: var(--gray); padding: 3px; display:flex; flex-direction:column; }
   .card-tb{
-    background: linear-gradient(90deg, #7b0000, #b02a2a);
-    color:#fff; font-weight:bold; padding:3px 6px; font-size:12px;
-    display:flex; justify-content:space-between; align-items:center;
+    background: linear-gradient(90deg, #7b0000, #b02a2a); color:#fff; font-weight:bold;
+    padding:3px 6px; font-size:12px; display:flex; justify-content:space-between; align-items:center; gap:6px;
   }
-  .card-tb .yr{ background:#ffff00; color:#000; padding:0 5px; font-size:11px; }
-  .card-body{ padding:10px; background:#c0c0c0; flex:1; display:flex; flex-direction:column; }
-  .card-emoji{
-    font-size:46px; text-align:center; padding:10px 0;
-    background: #000; margin-bottom:8px;
-    border:2px inset #666;
+  .card-tb .nm{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .card-tb .yr{ background:#ffff00; color:#000; padding:0 5px; font-size:11px; flex:none; }
+  .card-body{ padding:9px; background:#c0c0c0; flex:1; display:flex; flex-direction:column; }
+
+  /* Pôster / imagem */
+  .poster{
+    height:150px; background:#000 center/cover no-repeat; margin-bottom:8px;
+    border:2px inset #666; display:flex; align-items:center; justify-content:center;
+    font-size:44px; position:relative; overflow:hidden; text-align:center;
   }
+  .poster .ph{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    width:100%; height:100%;
+    background:repeating-linear-gradient(45deg,#111 0 10px,#1a1a1a 10px 20px);
+    color:#eee;
+  }
+  .poster .ph .nm2{ font-size:11px; font-weight:bold; padding:0 6px; color:#9fd; letter-spacing:.5px; }
+  .poster.loading .ph::after{ content:"⏳"; font-size:14px; }
+  .poster img{ width:100%; height:100%; object-fit:cover; display:block; }
+
   .card-type{
     display:inline-block; background:var(--navy); color:#fff; font-size:10px;
-    padding:1px 6px; margin-bottom:8px; align-self:flex-start; text-transform:uppercase;
+    padding:1px 6px; margin-bottom:6px; align-self:flex-start; text-transform:uppercase;
   }
-  .card h3{ font-size:15px; margin-bottom:2px; }
-  .card .orig{ font-size:11px; color:#333; font-style:italic; margin-bottom:8px; }
+  .card h3{ font-size:14px; margin-bottom:2px; line-height:1.2; }
+  .card .orig{ font-size:11px; color:#333; font-style:italic; margin-bottom:6px; }
+  .card .nota{ font-size:11.5px; color:#222; margin-bottom:4px; }
 
-  .retro dt{
-    font-weight:bold; color:var(--navy); margin-top:7px; font-size:12px;
-    display:flex; align-items:center; gap:4px;
-  }
-  .retro dd{ font-size:12px; line-height:1.45; margin-top:2px; }
+  .retro dt{ font-weight:bold; color:var(--navy); margin-top:6px; font-size:12px; }
+  .retro dd{ font-size:12px; line-height:1.42; margin-top:2px; }
 
   .yt-btn{
-    display:block; text-align:center; margin-top:12px;
-    background:#cc0000; color:#fff !important; text-decoration:none;
-    padding:7px; font-weight:bold; font-size:12px;
+    display:block; text-align:center; margin-top:10px; background:#cc0000; color:#fff !important;
+    text-decoration:none; padding:6px; font-weight:bold; font-size:12px;
     border:2px solid; border-color:#ff6666 #660000 #660000 #ff6666;
   }
   .yt-btn:hover{ background:#e50000; }
   .yt-btn:active{ border-color:#660000 #ff6666 #ff6666 #660000; }
 
-  /* ====== Rodapé ====== */
-  .footer{
-    text-align:center; padding:16px; margin-top:16px; font-size:12px;
-    background:#c0c0c0; border-top:2px solid var(--light);
-  }
+  /* Rodapé */
+  .footer{ text-align:center; padding:16px; margin-top:16px; font-size:12px; background:#c0c0c0; border-top:2px solid var(--light); }
   .footer .counter{
     display:inline-block; background:#000; color:#0f0; font-family:"Courier New",monospace;
     padding:2px 8px; letter-spacing:3px; border:1px solid #0f0; margin:0 4px;
   }
   .footer a{ color:var(--navy); }
 
-  /* ====== Barra de tarefas ====== */
+  /* Barra de tarefas */
   .taskbar{
-    position:fixed; bottom:0; left:0; right:0; height:36px;
-    background: var(--gray);
-    display:flex; align-items:center; padding:3px 4px; gap:6px;
-    border-top:2px solid var(--light);
-    z-index:100;
+    position:fixed; bottom:0; left:0; right:0; height:36px; background: var(--gray);
+    display:flex; align-items:center; padding:3px 4px; gap:6px; border-top:2px solid var(--light); z-index:100;
   }
   .start-btn{
-    display:flex; align-items:center; gap:5px;
-    background:var(--gray); font-weight:bold; padding:3px 10px; cursor:pointer;
-    border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light);
-    font-size:13px;
+    display:flex; align-items:center; gap:5px; background:var(--gray); font-weight:bold;
+    padding:3px 10px; cursor:pointer; border:2px solid;
+    border-color:var(--light) var(--shadow) var(--shadow) var(--light); font-size:13px;
   }
-  .start-btn .logo{
-    display:inline-block; width:16px; height:16px;
-    background:
-      linear-gradient(135deg,#ff0000 0 50%,#00a000 50% 100%);
-    position:relative;
-  }
+  .start-btn .logo{ display:inline-block; width:16px; height:16px; background:linear-gradient(135deg,#ff0000 0 50%,#00a000 50% 100%); }
   .start-btn:active{ border-color:var(--shadow) var(--light) var(--light) var(--shadow); }
   .task-tabs{ flex:1; display:flex; gap:4px; overflow:hidden; }
-  .task-tab{
-    padding:3px 12px; font-size:12px; background:#d8d8d8;
-    border:2px solid; border-color:var(--shadow) var(--light) var(--light) var(--shadow);
-    white-space:nowrap;
-  }
-  .tray{
-    display:flex; align-items:center; gap:8px; padding:3px 10px;
-    border:2px solid; border-color:var(--shadow) var(--light) var(--light) var(--shadow);
-    font-size:12px;
-  }
+  .task-tab{ padding:3px 12px; font-size:12px; background:#d8d8d8; border:2px solid; border-color:var(--shadow) var(--light) var(--light) var(--shadow); white-space:nowrap; }
+  .tray{ display:flex; align-items:center; gap:8px; padding:3px 10px; border:2px solid; border-color:var(--shadow) var(--light) var(--light) var(--shadow); font-size:12px; }
 
-  /* Menu Iniciar */
-  .start-menu{
-    display:none;
-    position:fixed; bottom:38px; left:4px; width:230px; z-index:200;
-    background:var(--gray);
-    border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light);
-  }
+  .start-menu{ display:none; position:fixed; bottom:38px; left:4px; width:240px; z-index:200; background:var(--gray); border:2px solid; border-color:var(--light) var(--shadow) var(--shadow) var(--light); }
   .start-menu.open{ display:flex; }
-  .start-menu .sidebar{
-    width:28px; background:linear-gradient(var(--navy),#1084d0);
-    writing-mode:vertical-lr; transform:rotate(180deg);
-    color:#fff; font-weight:bold; font-size:15px; text-align:center; padding:8px 0;
-    letter-spacing:2px;
-  }
+  .start-menu .sidebar{ width:28px; background:linear-gradient(var(--navy),#1084d0); writing-mode:vertical-lr; transform:rotate(180deg); color:#fff; font-weight:bold; font-size:15px; text-align:center; padding:8px 0; letter-spacing:2px; }
   .start-menu ul{ list-style:none; flex:1; padding:3px; }
-  .start-menu li{
-    padding:6px 8px; cursor:pointer; font-size:13px;
-    display:flex; align-items:center; gap:8px;
-  }
+  .start-menu li{ padding:6px 8px; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:8px; }
   .start-menu li:hover{ background:var(--navy); color:#fff; }
   .start-menu .sep{ border-top:1px solid var(--dark); border-bottom:1px solid var(--light); margin:3px 2px; padding:0; }
 
   @media (max-width:640px){
     .hero h1{ font-size:20px; }
-    .cards{ grid-template-columns:1fr; }
+    .cards{ grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); }
     .task-tabs{ display:none; }
   }
 </style>
 </head>
 <body>
 
-  <!-- Marquee -->
   <div class="marquee-bar">
-    <span>★ BEM-VINDO AO NOSTALGIA OS 95 ★ &nbsp; VOLTE NO TEMPO PARA AS TARDES DE DESENHO ★ &nbsp; 70s • 80s • 90s • 2000s ★ &nbsp; NÃO ESQUEÇA DE REBOBINAR A FITA ★ &nbsp; INSIRA O DISQUETE E APERTE PLAY ★</span>
+    <span>★ NOSTALGIA OS 95 ★ &nbsp; AGORA COM CATEGORIAS E IMAGENS ★ &nbsp; 70s • 80s • 90s • 2000s • TV MANCHETE ★ &nbsp; NÃO ESQUEÇA DE REBOBINAR A FITA ★ &nbsp; INSIRA O DISQUETE E APERTE PLAY ★</span>
   </div>
 
   <div class="window bevel-out">
@@ -296,42 +234,35 @@
 
       <div class="hero">
         <h1>~ MEMÓRIAS DA INFÂNCIA ~<span class="blink">_</span></h1>
-        <p>Um retrocesso das melhores lembranças da TV — como foram criadas, como terminaram e por onde andam seus atores e criadores.</p>
+        <p>Desenhos, animes, tokusatsu e séries — organizados por categoria, com o retrospecto de cada clássico.</p>
         <div class="under-construction">🚧 SITE EM CONSTRUÇÃO ETERNA 🚧</div>
       </div>
 
       <div class="notice bevel-in">
         <span class="ico">💡</span>
         <div>
-          <b>Sobre os links do YouTube:</b> cada card tem um botão <b>▶ ASSISTIR NO YOUTUBE</b> que abre uma
-          busca já pronta pelo <b>filme / episódio completo</b> no YouTube. Usamos links de busca (e não IDs
-          de vídeo fixos) de propósito: vídeos avulsos são removidos por direitos autorais e os links "quebram",
-          mas a busca sempre te leva ao que estiver disponível no momento. É só clicar e apertar PLAY. 🍿
+          <b>Imagens & vídeos:</b> as capas são carregadas automaticamente da <b>Wikipédia</b> quando cada card aparece
+          na tela (quando não há imagem, mostramos um pôster estilizado de fita VHS). O botão
+          <b>▶ ASSISTIR NO YOUTUBE</b> abre a busca pronta pelo episódio/filme completo. É só clicar e apertar PLAY. 🍿
         </div>
       </div>
 
-      <!-- Abas -->
       <div class="tabs" id="tabs"></div>
       <div class="tab-panel-frame bevel-in">
         <div class="decade-desc" id="decadeDesc"></div>
-        <div class="cards" id="cards"></div>
+        <div class="cat-index" id="catIndex"></div>
+        <div id="content"></div>
       </div>
 
       <div class="footer">
         <p>Feito com muito ❤️, um pouquinho de MS Paint e o barulho da internet discada.</p>
-        <p style="margin-top:8px;">Visitantes desde 1998:
-          <span class="counter" id="counter">00013370</span>
-        </p>
-        <p style="margin-top:8px;">
-          <a href="#top">▲ Voltar ao topo</a> &nbsp;|&nbsp;
-          Melhor visualizado em <b>Netscape Navigator</b> a 800×600 🖥️
-        </p>
+        <p style="margin-top:8px;">Visitantes desde 1998: <span class="counter" id="counter">00013370</span></p>
+        <p style="margin-top:8px;"><a href="#top">▲ Voltar ao topo</a> &nbsp;|&nbsp; Melhor visualizado em <b>Netscape Navigator</b> a 800×600 🖥️</p>
       </div>
 
     </div>
   </div>
 
-  <!-- Menu Iniciar -->
   <div class="start-menu" id="startMenu">
     <div class="sidebar">Nostalgia&nbsp;95</div>
     <ul>
@@ -350,520 +281,528 @@
 
   <span id="top"></span>
 
-  <!-- Barra de tarefas -->
   <div class="taskbar bevel-out">
     <div class="start-btn" id="startBtn"><span class="logo"></span> Iniciar</div>
-    <div class="task-tabs">
-      <div class="task-tab">📺 Nostalgia.exe</div>
-    </div>
+    <div class="task-tabs"><div class="task-tab">📺 Nostalgia.exe</div></div>
     <div class="tray">🔊 <span id="clock">12:00</span></div>
   </div>
 
 <script>
 /* =========================================================
-   DADOS — Desenhos e séries por década
-   Campos: nome, orig(título original/país), tipo, emoji,
-   criacao, fim, elenco (por onde andam), yt (busca YouTube)
+   Campos por item:
+   nome, orig, tipo, emoji, ano?, q? (busca da imagem na Wikipédia),
+   yt? (busca no YouTube), criacao?/fim?/elenco? (retrospecto),
+   nota? (linha curta nas fichas leves)
+   Cards com "criacao" mostram retrospecto completo; os demais são fichas leves.
    ========================================================= */
 const DECADES = {
+
   "70s": {
     label: "70s",
-    desc: "dir anos70 /p:desenhos-e-series --carrega TARDES-DE-SABADO.BAT",
-    items: [
-      {
-        nome:"Chaves", orig:"El Chavo del Ocho — México (1971)", tipo:"Série", emoji:"🛢️",
-        criacao:"Criado por Roberto Gómez Bolaños (Chespirito), nasceu de um quadro do programa de humor de Chespirito e virou série própria em 1973, girando em torno de um menino órfão que mora num barril numa vila humilde.",
-        fim:"A produção original encerrou em 1980, mas os episódios rodam sem parar na TV latino-americana há mais de 40 anos. Saiu do ar em vários países em 2020 por disputa de direitos com a família de Chespirito.",
-        elenco:"Chespirito faleceu em 2014. Ramón Valdés (Seu Madruga) morreu em 1988 e Florinda Meza (Dona Florinda) segue viva e cuidando do legado do marido. Carlos Villagrán (Quico) ainda se apresenta ao vivo com o personagem.",
-        yt:"Chaves episódio completo dublado"
-      },
-      {
-        nome:"Chapolin Colorado", orig:"El Chapulín Colorado — México (1970)", tipo:"Série", emoji:"🦗",
-        criacao:"Outra criação de Chespirito: uma paródia dos super-heróis, um herói atrapalhado, medroso e de coração enorme, com sua marreta biônica e as pílulas de chiqutitolina.",
-        fim:"Terminou em 1979 junto com o auge de Chespirito, mas influenciou até o desenho 'El Chapulín Colorado' animado e homenagens em séries modernas.",
-        elenco:"Roberto Gómez Bolaños (o próprio Chapolin) morreu em 2014; o bordão 'Não contavam com minha astúcia!' virou eterno.",
-        yt:"Chapolin Colorado episódio completo dublado"
-      },
-      {
-        nome:"Scooby-Doo, Cadê Você!", orig:"Scooby-Doo, Where Are You! — EUA (1969)", tipo:"Desenho", emoji:"🐕",
-        criacao:"Criado por Joe Ruby e Ken Spears para a Hanna-Barbera como uma alternativa 'não violenta' aos desenhos de ação, misturando mistério, um dogue covarde e uma van chamada Máquina do Mistério.",
-        fim:"A série clássica virou uma franquia infinita, com dezenas de encarnações, filmes e reboots até hoje pela Warner.",
-        elenco:"Os criadores Joe Ruby (†2020) e Ken Spears (†2020) faleceram. Frank Welker, voz original do Fred, dubla o Scooby até hoje — décadas no mesmo papel.",
-        yt:"Scooby-Doo cadê você episódio completo dublado anos 70"
-      },
-      {
-        nome:"A Pantera Cor-de-Rosa", orig:"The Pink Panther — EUA (1969)", tipo:"Desenho", emoji:"🐆",
-        criacao:"Nascida das aberturas animadas dos filmes de comédia 'A Pantera Cor-de-Rosa', a pantera muda ganhou desenhos próprios embalados pelo tema jazz inesquecível de Henry Mancini.",
-        fim:"As animações clássicas seguiram pelos anos 70 e 80; a personagem virou ícone publicitário (a fibra de vidro rosa) e teve reboots nos anos 90 e 2010.",
-        elenco:"Henry Mancini, autor do tema, morreu em 1994, mas aquela musiquinha 'dead-a-dead-a...' é imortal.",
-        yt:"Pantera Cor-de-Rosa desenho completo episódios"
-      },
-      {
-        nome:"Meteoro (Speed Racer)", orig:"Mach GoGoGo — Japão (1967)", tipo:"Anime", emoji:"🏎️",
-        criacao:"Um dos primeiros animes a estourar no Ocidente, criado por Tatsuo Yoshida, sobre o piloto Meteoro e seu carro Mach 5 cheio de gadgets.",
-        fim:"O anime original terminou no fim dos anos 60, mas a dublagem manteve a febre nos anos 70/80 e inspirou o filme live-action dos irmãos Wachowski em 2008.",
-        elenco:"Tatsuo Yoshida, o criador, faleceu em 1977. A abertura 'Vai, Meteoro!' ainda faz gente de meia-idade cantar junto.",
-        yt:"Meteoro Speed Racer episódio completo dublado"
-      },
-      {
-        nome:"Sítio do Picapau Amarelo", orig:"Brasil (1977)", tipo:"Série", emoji:"🌽",
-        criacao:"Baseada na obra de Monteiro Lobato, a versão da TV Globo (1977) trouxe à vida Emília, Visconde, Saci, Cuca e a turma do sítio da Dona Benta.",
-        fim:"A versão clássica foi até 1986; a Globo refez a série em 2001. A Cuca verde-amarela virou pesadelo de gerações inteiras.",
-        elenco:"Dercy Gonçalves e vários nomes do elenco original já faleceram. A obra de Monteiro Lobato entrou em domínio público, garantindo novas adaptações.",
-        yt:"Sítio do Picapau Amarelo 1977 episódio completo"
-      },
-      {
-        nome:"Super Amigos", orig:"Super Friends — EUA (1973)", tipo:"Desenho", emoji:"🦸",
-        criacao:"A Hanna-Barbera reuniu a Liga da Justiça da DC (Superman, Batman, Mulher-Maravilha, Aquaman) num desenho de sábado de manhã voltado ao público infantil.",
-        fim:"Rodou em várias versões até 1986, quando abriu caminho para os desenhos da DC dos anos 90.",
-        elenco:"Vários dubladores já se foram; a franquia da Liga da Justiça, claro, virou bilheteria de cinema décadas depois.",
-        yt:"Super Amigos desenho episódio completo dublado"
-      },
-      {
-        nome:"A Feiticeira", orig:"Bewitched — EUA (1964)", tipo:"Série", emoji:"🧹",
-        criacao:"Sitcom sobre Samantha, uma bruxa que se casa com um humano e promete não usar magia — mas balança o narizinho e apronta em cada episódio.",
-        fim:"Terminou em 1972 após 8 temporadas; reprises embalaram as tardes brasileiras por décadas.",
-        elenco:"Elizabeth Montgomery (Samantha) faleceu em 1995. A série ganhou um filme com Nicole Kidman em 2005.",
-        yt:"A Feiticeira Bewitched episódio completo dublado"
-      },
-      {
-        nome:"Tom e Jerry", orig:"Tom and Jerry — EUA (reprises anos 70)", tipo:"Desenho", emoji:"🐱",
-        criacao:"Criados por William Hanna e Joseph Barbera na MGM nos anos 40, o gato e o rato viveram sua eterna perseguição sem diálogos — só gags físicas geniais — e dominaram as tardes brasileiras.",
-        fim:"Os curtas clássicos rodam há 80 anos; a dupla ganhou filmes, séries novas e um longa híbrido em 2021.",
-        elenco:"Hanna (†2001) e Barbera (†2006) fundaram a Hanna-Barbera, maior fábrica de desenhos da TV. Tom e Jerry seguem imortais.",
-        yt:"Tom e Jerry episódios completos clássicos"
-      },
-      {
-        nome:"Zé Colmeia", orig:"The Yogi Bear Show — EUA (1961)", tipo:"Desenho", emoji:"🐻",
-        criacao:"Da Hanna-Barbera, o urso mais esperto que a média do Parque Jellystone e seu amigo Catatau viviam roubando cestas de piquenique e fugindo do Guarda Smith.",
-        fim:"Rodou por décadas em reprises; ganhou filme live-action/CGI em 2010.",
-        elenco:"O personagem foi inspirado em bordões da época e virou um dos rostos mais reconhecíveis da Hanna-Barbera.",
-        yt:"Zé Colmeia desenho episódio completo dublado"
-      },
-      {
-        nome:"Manda-Chuva", orig:"Top Cat — EUA (1961)", tipo:"Desenho", emoji:"🎩",
-        criacao:"Da Hanna-Barbera: o gato malandro Manda-Chuva lidera sua turma de gatos de rua em Nova York, sempre aprontando golpes e fugindo do Guarda Belo.",
-        fim:"Teve só 30 episódios, mas as reprises o eternizaram no Brasil e na América Latina — onde é ainda mais popular que nos EUA.",
-        elenco:"Ganhou filmes animados no México em 2011 e 2015, provando o carinho latino pelo personagem.",
-        yt:"Manda-Chuva Top Cat episódio completo dublado"
-      }
+    desc: "dir anos70 /p:por-categoria --carrega TARDES-DE-SABADO.BAT",
+    groups: [
+      { cat:"📺 Comédia & a turma da vila", items:[
+        { nome:"Chaves", orig:"El Chavo del Ocho — México (1971)", tipo:"Série", emoji:"🛢️", q:"Chaves série de televisão",
+          criacao:"Criado por Roberto Gómez Bolaños (Chespirito), nasceu de um quadro de humor e virou série em 1973, sobre um menino órfão que mora num barril numa vila humilde.",
+          fim:"A produção original acabou em 1980, mas roda sem parar há 40+ anos. Saiu do ar em vários países em 2020 por disputa de direitos.",
+          elenco:"Chespirito faleceu em 2014. Ramón Valdés (Seu Madruga) morreu em 1988; Florinda Meza (Dona Florinda) segue cuidando do legado; Carlos Villagrán (Quico) ainda se apresenta.",
+          yt:"Chaves episódio completo dublado" },
+        { nome:"Chapolin Colorado", orig:"El Chapulín Colorado — México (1970)", tipo:"Série", emoji:"🦗", q:"Chapolin Colorado",
+          criacao:"Outra criação de Chespirito: paródia de super-herói, medroso e de bom coração, com sua marreta biônica e as pastilhas de chiquitolina.",
+          fim:"Terminou em 1979, mas virou desenho animado e é homenageado até hoje.",
+          elenco:"Roberto Gómez Bolaños morreu em 2014; o bordão 'Não contavam com minha astúcia!' é eterno.",
+          yt:"Chapolin Colorado episódio completo dublado" },
+        { nome:"A Feiticeira", orig:"Bewitched — EUA (1964)", tipo:"Série", emoji:"🧹", q:"Bewitched série",
+          criacao:"Sitcom sobre Samantha, uma bruxa casada com um humano que promete não usar magia — mas balança o narizinho e apronta.",
+          fim:"Terminou em 1972; reprises embalaram tardes brasileiras por décadas.",
+          elenco:"Elizabeth Montgomery (Samantha) faleceu em 1995. Ganhou filme com Nicole Kidman em 2005.",
+          yt:"A Feiticeira Bewitched episódio completo dublado" },
+        { nome:"Sítio do Picapau Amarelo", orig:"Brasil — TV Globo (1977)", tipo:"Série", emoji:"🌽", q:"Sítio do Picapau Amarelo 1977",
+          criacao:"Baseada em Monteiro Lobato, deu vida a Emília, Visconde, Saci, Cuca e a turma do sítio da Dona Benta.",
+          fim:"A versão clássica foi até 1986; a Globo refez em 2001. A Cuca verde-amarela virou pesadelo de gerações.",
+          elenco:"Vários nomes do elenco original já faleceram. A obra de Lobato está em domínio público.",
+          yt:"Sítio do Picapau Amarelo 1977 episódio completo" }
+      ]},
+      { cat:"🐭 Desenhos clássicos", items:[
+        { nome:"Scooby-Doo, Cadê Você!", orig:"Scooby-Doo, Where Are You! — EUA (1969)", tipo:"Desenho", emoji:"🐕", q:"Scooby-Doo Where Are You",
+          criacao:"Criado por Joe Ruby e Ken Spears para a Hanna-Barbera como alternativa 'não violenta', com mistério, um dogue covarde e a Máquina do Mistério.",
+          fim:"Virou franquia infinita, com dezenas de séries e filmes até hoje.",
+          elenco:"Ruby (†2020) e Spears (†2020) faleceram. Frank Welker dubla o Scooby há décadas.",
+          yt:"Scooby-Doo cadê você episódio completo dublado" },
+        { nome:"A Pantera Cor-de-Rosa", orig:"The Pink Panther — EUA (1969)", tipo:"Desenho", emoji:"🐆", q:"Pantera Cor-de-Rosa desenho",
+          criacao:"Nascida das aberturas dos filmes, a pantera muda ganhou desenhos próprios com o tema jazz de Henry Mancini.",
+          fim:"Seguiu pelos anos 70/80; virou ícone publicitário e teve reboots.",
+          elenco:"Henry Mancini faleceu em 1994, mas a musiquinha é imortal.",
+          yt:"Pantera Cor-de-Rosa desenho completo episódios" },
+        { nome:"Tom e Jerry", orig:"Tom and Jerry — EUA (reprises anos 70)", tipo:"Desenho", emoji:"🐱", q:"Tom and Jerry",
+          criacao:"Criados por Hanna e Barbera na MGM nos anos 40, o gato e o rato viveram sua perseguição eterna só com gags físicas geniais.",
+          fim:"Os curtas rodam há 80 anos; ganharam filmes e um longa híbrido em 2021.",
+          elenco:"Hanna (†2001) e Barbera (†2006) fundaram a Hanna-Barbera. A dupla é imortal.",
+          yt:"Tom e Jerry episódios completos clássicos" },
+        { nome:"Zé Colmeia", orig:"The Yogi Bear Show — EUA (1961)", tipo:"Desenho", emoji:"🐻", q:"Zé Colmeia Yogi Bear",
+          criacao:"Da Hanna-Barbera: o urso 'mais esperto que a média' do Parque Jellystone e o amigo Catatau roubando cestas de piquenique.",
+          fim:"Rodou por décadas; ganhou filme CGI em 2010.",
+          elenco:"Virou um dos rostos mais reconhecíveis da Hanna-Barbera.",
+          yt:"Zé Colmeia desenho episódio completo dublado" },
+        { nome:"Manda-Chuva", orig:"Top Cat — EUA (1961)", tipo:"Desenho", emoji:"🎩", q:"Top Cat Manda-Chuva",
+          criacao:"O gato malandro lidera sua turma em Nova York, sempre aprontando golpes e fugindo do Guarda Belo.",
+          fim:"Só 30 episódios, mas as reprises o eternizaram na América Latina — onde é mais popular que nos EUA.",
+          elenco:"Ganhou filmes animados no México em 2011 e 2015.",
+          yt:"Manda-Chuva Top Cat episódio completo dublado" },
+        { nome:"Pica-Pau", orig:"Woody Woodpecker — EUA", tipo:"Desenho", emoji:"🐦", q:"Pica-Pau Woody Woodpecker", nota:"Walter Lantz; a risada mais reconhecível do mundo.", yt:"Pica-Pau desenho clássico episódio completo dublado" },
+        { nome:"Papa-Léguas", orig:"Road Runner — EUA", tipo:"Desenho", emoji:"🏃", q:"Papa-Léguas desenho", nota:"'Bip-bip!' e o Coiote eternamente derrotado.", yt:"Papa-Léguas e Coiote episódios completos" },
+        { nome:"Hong Kong Fu", orig:"Hong Kong Phooey — EUA (1974)", tipo:"Desenho", emoji:"🐶", q:"Hong Kong Phooey", nota:"O cão faxineiro que virava super-herói kung fu.", yt:"Hong Kong Fu Phooey episódio completo dublado" },
+        { nome:"Dinamouro", orig:"Dynomutt, Dog Wonder — EUA (1976)", tipo:"Desenho", emoji:"🦴", q:"Dynomutt Dog Wonder", nota:"O cão-robô atrapalhado e o Falcão Azul.", yt:"Dinamouro Dynomutt episódio completo dublado" },
+        { nome:"Capitão Caverna", orig:"Captain Caveman — EUA (1977)", tipo:"Desenho", emoji:"🪨", q:"Captain Caveman", nota:"O homem-das-cavernas peludo e as Angels.", yt:"Capitão Caverna episódio completo dublado" },
+        { nome:"Turma da Mônica", orig:"Brasil — Maurício de Sousa (1976)", tipo:"Desenho", emoji:"🐰", q:"Turma da Mônica série animada", nota:"A primeira animação da turma de Maurício de Sousa.", yt:"Turma da Mônica desenho clássico episódios" }
+      ]},
+      { cat:"🦸 Super-heróis & aventura", items:[
+        { nome:"Super Amigos", orig:"Super Friends — EUA (1973)", tipo:"Desenho", emoji:"🦸", q:"Super Friends Super Amigos",
+          criacao:"A Hanna-Barbera reuniu a Liga da Justiça da DC (Superman, Batman, Mulher-Maravilha, Aquaman) num desenho de sábado de manhã.",
+          fim:"Rodou em várias versões até 1986, abrindo caminho para os desenhos da DC dos anos 90.",
+          elenco:"A franquia da Liga virou bilheteria de cinema décadas depois.",
+          yt:"Super Amigos desenho episódio completo dublado" },
+        { nome:"Star Trek: A Série Animada", orig:"Star Trek: The Animated Series — EUA (1973)", tipo:"Desenho", emoji:"🖖", q:"Star Trek The Animated Series", nota:"A Enterprise em desenho, com o elenco original nas vozes.", yt:"Star Trek série animada 1973 episódio completo dublado" },
+        { nome:"Quarteto Fantástico", orig:"Fantastic Four — EUA (1978)", tipo:"Desenho", emoji:"4️⃣", q:"Fantastic Four 1978 animated", nota:"A versão setentista da primeira família da Marvel.", yt:"Quarteto Fantástico 1978 desenho episódio completo" }
+      ]},
+      { cat:"⚔️ Animes (antes da febre otaku)", items:[
+        { nome:"Meteoro (Speed Racer)", orig:"Mach GoGoGo — Japão (1967)", tipo:"Anime", emoji:"🏎️", q:"Speed Racer Mach GoGoGo",
+          criacao:"Um dos primeiros animes a estourar no Ocidente, de Tatsuo Yoshida, sobre o piloto Meteoro e o carro Mach 5 cheio de gadgets.",
+          fim:"Terminou no fim dos anos 60, mas a dublagem manteve a febre e inspirou o filme dos Wachowski em 2008.",
+          elenco:"Tatsuo Yoshida faleceu em 1977. 'Vai, Meteoro!' ainda faz gente cantar junto.",
+          yt:"Meteoro Speed Racer episódio completo dublado" },
+        { nome:"Heidi", orig:"Arupusu no Shōjo Heidi — Japão (1974)", tipo:"Anime", emoji:"🏔️", q:"Heidi anime 1974", nota:"Do estúdio que virou Ghibli (Takahata/Miyazaki).", yt:"Heidi anime 1974 episódio completo dublado" },
+        { nome:"Vickie, o Viking", orig:"Japão/Alemanha (1974)", tipo:"Anime", emoji:"⛵", q:"Vickie o Viking anime", nota:"O menininho viking esperto de trancinhas.", yt:"Vickie o Viking episódio completo dublado" },
+        { nome:"Marine Boy", orig:"Japão (1966)", tipo:"Anime", emoji:"🌊", q:"Marine Boy anime", nota:"O menino que mastigava goma de oxigênio pra respirar no mar.", yt:"Marine Boy episódio completo dublado" }
+      ]}
     ]
   },
 
   "80s": {
     label: "80s",
-    desc: "dir anos80 /p:desenhos-e-series --insere FITA-VHS.exe",
-    items: [
-      {
-        nome:"He-Man e os Mestres do Universo", orig:"He-Man and the Masters of the Universe — EUA (1983)", tipo:"Desenho", emoji:"⚔️",
-        criacao:"Criado pela Filmation para vender os bonecos da Mattel, contava a saga do Príncipe Adam que erguia a espada e gritava 'Eu tenho a força!' virando He-Man em Eternia.",
-        fim:"A série original foi até 1985; a franquia renasceu com reboots (2002 e a série da Netflix 'Masters of the Universe: Revelation' em 2021).",
-        elenco:"Frank Langella dublou o Esqueleto na versão Netflix. O boneco de He-Man é até hoje um dos brinquedos mais colecionados dos anos 80.",
-        yt:"He-Man Mestres do Universo episódio completo dublado"
-      },
-      {
-        nome:"She-Ra, A Princesa do Poder", orig:"She-Ra: Princess of Power — EUA (1985)", tipo:"Desenho", emoji:"👑",
-        criacao:"Spin-off de He-Man, apresentava Adora, irmã gêmea do Adam, que virava She-Ra para libertar o planeta Etheria da Horda do Mal.",
-        fim:"A original terminou em 1987; ganhou aclamado reboot na Netflix ('She-Ra e as Princesas do Poder', 2018–2020).",
-        elenco:"A versão moderna foi comandada por Noelle Stevenson e virou fenômeno de nova geração.",
-        yt:"She-Ra Princesa do Poder episódio completo dublado anos 80"
-      },
-      {
-        nome:"Cavaleiros do Zodíaco", orig:"Saint Seiya — Japão (1986)", tipo:"Anime", emoji:"⭐",
-        criacao:"Baseado no mangá de Masami Kurumada, acompanha Seiya e os cavaleiros de bronze protegendo Atena com suas armaduras inspiradas nas constelações.",
-        fim:"O anime clássico foi até 1989; a saga de Hades foi finalizada em OVAs nos anos 2000. Virou febre eterna com CDZ, remakes 3D e a versão da Netflix.",
-        elenco:"Masami Kurumada segue vivo e ativo. No Brasil, os dubladores clássicos (Élcio Sodré como Seiya, entre outros) viraram ídolos em eventos geek.",
-        yt:"Cavaleiros do Zodíaco episódio completo dublado saga santuário"
-      },
-      {
-        nome:"ThunderCats", orig:"ThunderCats — EUA (1985)", tipo:"Desenho", emoji:"🐈",
-        criacao:"Rankin/Bass criou os felinos humanoides que fogem do planeta Thundera e enfrentam a múmia Mumm-Ra na Terra dos Terceiros. 'ThunderCats, ó!'",
-        fim:"A série original foi até 1989; teve reboot em 2011 e o divertido 'ThunderCats Roar' em 2020.",
-        elenco:"Larry Kenney, a voz original do Leon-O, ainda participa de projetos da franquia. A Espada Justiceira é item de colecionador.",
-        yt:"ThunderCats episódio completo dublado anos 80"
-      },
-      {
-        nome:"Os Ursinhos Carinhosos", orig:"Care Bears — EUA (1985)", tipo:"Desenho", emoji:"🐻",
-        criacao:"Surgidos como cartões de felicitações da American Greetings, os ursinhos coloridos com estampas na barriga ganharam desenho e filmes espalhando o 'Olhar Carinhoso'.",
-        fim:"A série clássica seguiu pelos anos 80; a franquia foi reciclada em CGI nos anos 2000 e 2010.",
-        elenco:"Propriedade intelectual valiosa até hoje, os ursinhos voltam de tempos em tempos em novas séries de streaming.",
-        yt:"Ursinhos Carinhosos desenho episódio completo dublado"
-      },
-      {
-        nome:"Punky, a Levada da Breca", orig:"Punky Brewster — EUA (1984)", tipo:"Série", emoji:"🌈",
-        criacao:"Sitcom sobre uma menina abandonada pela mãe que é acolhida por um senhor rabugento; ficou famosa pelo estilo colorido e pelos tênis de cores diferentes.",
-        fim:"Terminou em 1988; ganhou até desenho animado e um revival com a atriz original em 2021.",
-        elenco:"Soleil Moon Frye (Punky) seguiu como atriz e diretora e retomou a personagem no revival do Peacock.",
-        yt:"Punky a levada da breca episódio completo dublado"
-      },
-      {
-        nome:"Caverna do Dragão", orig:"Dungeons & Dragons — EUA (1983)", tipo:"Desenho", emoji:"🐉",
-        criacao:"Baseado no RPG de mesa, seis jovens são transportados por um brinquedo de parque para um mundo de fantasia, guiados pelo Mestre dos Magos e caçados por Vingador.",
-        fim:"Terminou em 1985 com 27 episódios sem final oficial — o roteiro do episódio final ('Réquiem') nunca foi produzido, virando lenda entre os fãs.",
-        elenco:"O roteirista Michael Reaves revelou o final planejado anos depois. É citado como um dos maiores 'finais que nunca existiram' da TV.",
-        yt:"Caverna do Dragão episódio completo dublado"
-      },
-      {
-        nome:"MacGyver", orig:"MacGyver — EUA (1985)", tipo:"Série", emoji:"🔧",
-        criacao:"Um agente que resolve tudo com engenhosidade, um canivete suíço e fita adesiva, evitando armas de fogo — um herói 'faça você mesmo'.",
-        fim:"A série clássica foi até 1992; ganhou reboot em 2016 que durou até 2021.",
-        elenco:"Richard Dean Anderson (o MacGyver original) aposentou-se da atuação e faz aparições em convenções; virou até personagem de piada nos Simpsons.",
-        yt:"MacGyver episódio completo dublado anos 80"
-      },
-      {
-        nome:"A-Team (Esquadrão Classe A)", orig:"The A-Team — EUA (1983)", tipo:"Série", emoji:"🚐",
-        criacao:"Um grupo de ex-militares foragidos que vira mercenários do bem, liderados por Hannibal e com o inesquecível B.A. Baracus vivido por Mr. T.",
-        fim:"Terminou em 1987; ganhou versão de cinema em 2010.",
-        elenco:"George Peppard (Hannibal) faleceu em 1994. Mr. T superou um câncer e virou figura pop e motivacional. Dirk Benedict e Dwight Schultz seguem em eventos.",
-        yt:"Esquadrão Classe A The A-Team episódio completo dublado"
-      },
-      {
-        nome:"Thundercats... digo, Ursinhos Gummi", orig:"Adventures of the Gummi Bears — EUA (1985)", tipo:"Desenho", emoji:"🍬",
-        criacao:"Primeira série de animação da Disney feita para a TV, sobre ursinhos mágicos que bebem 'suco de gummi' para pular alto e escondem-se dos humanos.",
-        fim:"Foi até 1991, abrindo caminho para toda a era de ouro da Disney Afternoon (Tico e Teco, DuckTales).",
-        elenco:"Marcou o início da Disney Television Animation, que dominaria as tardes dos anos 90.",
-        yt:"Ursinhos Gummi episódio completo dublado"
-      },
-      {
-        nome:"Os Smurfs", orig:"The Smurfs — EUA/Bélgica (1981)", tipo:"Desenho", emoji:"🔵",
-        criacao:"A Hanna-Barbera adaptou os personagens azuis do belga Peyo: uma aldeia de cogumelos onde vivem os Smurfs, sempre fugindo do bruxo Gargamel e seu gato Cruel.",
-        fim:"A série foi até 1989. A marca voltou forte com filmes híbridos (2011) e uma nova animação em 2021.",
-        elenco:"Peyo (Pierre Culliford), criador dos Smurfs, faleceu em 1992. Os bonecos azuis são bilionários em licenciamento até hoje.",
-        yt:"Os Smurfs desenho episódio completo dublado"
-      },
-      {
-        nome:"Inspetor Bugiganga", orig:"Inspector Gadget — EUA/França/Canadá (1983)", tipo:"Desenho", emoji:"🕵️",
-        criacao:"Um detetive ciborgue atrapalhado, cheio de geringonças no corpo, que resolve os casos sem perceber — graças à sobrinha Penny e ao cão Cérebro — contra o Dr. Garra.",
-        fim:"A série clássica foi até 1986; ganhou filme com Matthew Broderick (1999) e reboots em CGI na Netflix.",
-        elenco:"O bordão 'Vai, Bugiganga!' e a trilha inconfundível marcaram a década. A franquia segue rendendo novas séries.",
-        yt:"Inspetor Bugiganga episódio completo dublado"
-      },
-      {
-        nome:"As Tartarugas Ninja", orig:"Teenage Mutant Ninja Turtles — EUA (1987)", tipo:"Desenho", emoji:"🐢",
-        criacao:"Nascidas de um quadrinho independente de Eastman e Laird, as quatro tartarugas mutantes ninjas (Leonardo, Michelangelo, Donatello e Raphael) viraram desenho, febre de brinquedos e cultura pop.",
-        fim:"A animação clássica foi até 1996; a franquia nunca parou — filmes live-action, reboots e o elogiado 'Caos Mutante' (2023).",
-        elenco:"Kevin Eastman segue envolvido nos projetos. O grito 'Cowabunga!' e a paixão por pizza atravessaram gerações.",
-        yt:"Tartarugas Ninja 1987 episódio completo dublado"
-      }
+    desc: "dir anos80 /p:por-categoria --insere FITA-VHS.exe",
+    groups: [
+      { cat:"🦸 Super-heróis & Ação", items:[
+        { nome:"He-Man e os Mestres do Universo", orig:"Masters of the Universe — EUA (1983)", tipo:"Desenho", emoji:"⚔️", q:"He-Man Masters of the Universe",
+          criacao:"Criado pela Filmation para vender os bonecos da Mattel; o Príncipe Adam erguia a espada e virava He-Man em Eternia.",
+          fim:"A série foi até 1985; renasceu com reboots (2002 e a Netflix em 2021).",
+          elenco:"Frank Langella dublou o Esqueleto na Netflix. O boneco é um dos mais colecionados dos anos 80.",
+          yt:"He-Man Mestres do Universo episódio completo dublado" },
+        { nome:"ThunderCats", orig:"ThunderCats — EUA (1985)", tipo:"Desenho", emoji:"🐈", q:"ThunderCats 1985",
+          criacao:"A Rankin/Bass criou os felinos que fogem de Thundera e enfrentam a múmia Mumm-Ra. 'ThunderCats, ó!'",
+          fim:"Foi até 1989; teve reboot em 2011 e 'ThunderCats Roar' em 2020.",
+          elenco:"Larry Kenney (Leon-O) ainda participa da franquia. A Espada Justiceira é item de colecionador.",
+          yt:"ThunderCats episódio completo dublado anos 80" },
+        { nome:"Caverna do Dragão", orig:"Dungeons & Dragons — EUA (1983)", tipo:"Desenho", emoji:"🐉", q:"Caverna do Dragão Dungeons Dragons cartoon",
+          criacao:"Do RPG de mesa: seis jovens são levados a um mundo de fantasia pelo Mestre dos Magos, caçados por Vingador.",
+          fim:"Terminou em 1985 com 27 episódios sem final oficial — o roteiro do episódio final nunca foi produzido, virando lenda.",
+          elenco:"O roteirista Michael Reaves revelou o final planejado anos depois.",
+          yt:"Caverna do Dragão episódio completo dublado" },
+        { nome:"Transformers", orig:"The Transformers — EUA/Japão (1984)", tipo:"Desenho", emoji:"🤖", q:"Transformers 1984 cartoon", nota:"Autobots x Decepticons; 'robôs disfarçados'. Virou franquia de cinema bilionária.", yt:"Transformers 1984 desenho episódio completo dublado" },
+        { nome:"Comandos em Ação (G.I. Joe)", orig:"G.I. Joe: A Real American Hero — EUA (1985)", tipo:"Desenho", emoji:"🎖️", q:"G.I. Joe A Real American Hero cartoon", nota:"Os Comandos contra a Cobra. 'Conhecer é meio caminho andado.'", yt:"Comandos em Ação G.I. Joe episódio completo dublado" },
+        { nome:"SilverHawks", orig:"SilverHawks — EUA (1986)", tipo:"Desenho", emoji:"🦅", q:"SilverHawks 1986", nota:"'Parcialmente metálicos, parcialmente reais' — os primos espaciais dos ThunderCats.", yt:"SilverHawks episódio completo dublado" },
+        { nome:"MASK", orig:"M.A.S.K. — EUA (1985)", tipo:"Desenho", emoji:"🚗", q:"MASK 1985 cartoon", nota:"Veículos que se transformam e máscaras com superpoderes contra a V.E.N.O.M.", yt:"MASK desenho 1985 episódio completo dublado" }
+      ]},
+      { cat:"⚔️ Anime", items:[
+        { nome:"Cavaleiros do Zodíaco", orig:"Saint Seiya — Japão (1986)", tipo:"Anime", emoji:"⭐", q:"Saint Seiya Cavaleiros do Zodíaco",
+          criacao:"Do mangá de Masami Kurumada: Seiya e os cavaleiros de bronze protegem Atena com armaduras inspiradas nas constelações.",
+          fim:"O anime clássico foi até 1989; a saga de Hades saiu em OVAs nos anos 2000. Virou remakes 3D e série da Netflix.",
+          elenco:"Kurumada segue ativo. No Brasil, dubladores como Élcio Sodré (Seiya) viraram ídolos geek.",
+          yt:"Cavaleiros do Zodíaco episódio completo dublado saga santuário" },
+        { nome:"Robotech", orig:"Japão/EUA (1985)", tipo:"Anime", emoji:"🛸", q:"Robotech anime", nota:"Naves que viram robôs numa saga de guerra espacial (Macross).", yt:"Robotech episódio completo dublado" }
+      ]},
+      { cat:"😂 Comédia & aventura (desenhos)", items:[
+        { nome:"Os Smurfs", orig:"The Smurfs — EUA/Bélgica (1981)", tipo:"Desenho", emoji:"🔵", q:"Os Smurfs desenho",
+          criacao:"A Hanna-Barbera adaptou os personagens azuis do belga Peyo: uma aldeia de cogumelos fugindo do bruxo Gargamel.",
+          fim:"Foi até 1989. Voltou com filmes híbridos (2011) e nova animação em 2021.",
+          elenco:"Peyo faleceu em 1992. Os Smurfs são bilionários em licenciamento.",
+          yt:"Os Smurfs desenho episódio completo dublado" },
+        { nome:"Inspetor Bugiganga", orig:"Inspector Gadget — 1983", tipo:"Desenho", emoji:"🕵️", q:"Inspector Gadget",
+          criacao:"Um detetive ciborgue atrapalhado que resolve tudo sem perceber, graças à sobrinha Penny e ao cão Cérebro, contra o Dr. Garra.",
+          fim:"Foi até 1986; ganhou filme (1999) e reboots em CGI na Netflix.",
+          elenco:"'Vai, Bugiganga!' e a trilha inconfundível marcaram a década.",
+          yt:"Inspetor Bugiganga episódio completo dublado" },
+        { nome:"As Tartarugas Ninja", orig:"Teenage Mutant Ninja Turtles — EUA (1987)", tipo:"Desenho", emoji:"🐢", q:"Teenage Mutant Ninja Turtles 1987",
+          criacao:"De um quadrinho de Eastman e Laird, as quatro tartarugas mutantes viraram desenho, febre de brinquedos e cultura pop.",
+          fim:"A animação foi até 1996; a franquia nunca parou — incluindo o elogiado 'Caos Mutante' (2023).",
+          elenco:"'Cowabunga!' e a paixão por pizza atravessaram gerações.",
+          yt:"Tartarugas Ninja 1987 episódio completo dublado" },
+        { nome:"Ursinhos Gummi", orig:"Adventures of the Gummi Bears — EUA (1985)", tipo:"Desenho", emoji:"🍬", q:"Adventures of the Gummi Bears",
+          criacao:"Primeira série de animação da Disney feita para a TV; ursinhos mágicos que bebem 'suco de gummi' para pular alto.",
+          fim:"Foi até 1991, abrindo a era de ouro da Disney Afternoon.",
+          elenco:"Marcou o início da Disney Television Animation.",
+          yt:"Ursinhos Gummi episódio completo dublado" },
+        { nome:"DuckTales — Os Caçadores de Aventuras", orig:"DuckTales — EUA (1987)", tipo:"Desenho", emoji:"💰", q:"DuckTales 1987", nota:"Tio Patinhas e os sobrinhos caçando tesouros. Ganhou reboot em 2017.", yt:"DuckTales os caçadores de aventuras episódio completo dublado" },
+        { nome:"Tico e Teco: Defensores da Lei", orig:"Chip 'n Dale: Rescue Rangers — 1989", tipo:"Desenho", emoji:"🐿️", q:"Chip n Dale Rescue Rangers", nota:"Os esquilos detetives e a turminha do resgate.", yt:"Tico e Teco defensores da lei episódio completo dublado" },
+        { nome:"Os Caça-Fantasmas Reais", orig:"The Real Ghostbusters — 1986", tipo:"Desenho", emoji:"👻", q:"The Real Ghostbusters", nota:"O desenho dos Caça-Fantasmas com o Slimer.", yt:"Os Caça-Fantasmas Reais episódio completo dublado" },
+        { nome:"Garfield e Seus Amigos", orig:"Garfield and Friends — 1988", tipo:"Desenho", emoji:"🍝", q:"Garfield and Friends", nota:"O gato preguiçoso viciado em lasanha, de Jim Davis.", yt:"Garfield e seus amigos episódio completo dublado" },
+        { nome:"Alvin e os Esquilos", orig:"Alvin and the Chipmunks — 1983", tipo:"Desenho", emoji:"🎤", q:"Alvin and the Chipmunks 1983", nota:"Os três esquilos cantores e o paciente Dave.", yt:"Alvin e os Esquilos desenho anos 80 episódio completo dublado" }
+      ]},
+      { cat:"👧 Meninas & pré-escolar", items:[
+        { nome:"She-Ra, A Princesa do Poder", orig:"She-Ra: Princess of Power — EUA (1985)", tipo:"Desenho", emoji:"👑", q:"She-Ra Princess of Power 1985",
+          criacao:"Spin-off de He-Man: Adora, irmã gêmea do Adam, vira She-Ra para libertar Etheria da Horda do Mal.",
+          fim:"A original acabou em 1987; teve aclamado reboot na Netflix (2018–2020).",
+          elenco:"A versão moderna, de Noelle Stevenson, virou fenômeno de nova geração.",
+          yt:"She-Ra Princesa do Poder episódio completo dublado anos 80" },
+        { nome:"Os Ursinhos Carinhosos", orig:"Care Bears — EUA (1985)", tipo:"Desenho", emoji:"🐻", q:"Care Bears Ursinhos Carinhosos",
+          criacao:"Surgidos como cartões da American Greetings, os ursinhos coloridos espalhavam o 'Olhar Carinhoso'.",
+          fim:"Seguiu pelos anos 80; foi reciclado em CGI depois.",
+          elenco:"IP valiosa, volta de tempos em tempos em novas séries.",
+          yt:"Ursinhos Carinhosos desenho episódio completo dublado" },
+        { nome:"My Little Pony", orig:"My Little Pony — EUA (1986)", tipo:"Desenho", emoji:"🦄", q:"My Little Pony 1986", nota:"Os pôneis da Hasbro que renasceram enormes com 'Friendship is Magic' (2010).", yt:"My Little Pony 1986 episódio completo dublado" },
+        { nome:"Moranguinho", orig:"Strawberry Shortcake — EUA", tipo:"Desenho", emoji:"🍓", q:"Strawberry Shortcake Moranguinho", nota:"A boneca cheirosa de morango e suas amigas.", yt:"Moranguinho desenho clássico episódio completo dublado" },
+        { nome:"Estrelinha Arco-Íris", orig:"Rainbow Brite — EUA (1984)", tipo:"Desenho", emoji:"🌈", q:"Rainbow Brite", nota:"A menina que trazia cor ao mundo com o cavalo Estrela.", yt:"Estrelinha Arco-Íris Rainbow Brite episódio completo dublado" },
+        { nome:"Jem e as Hologramas", orig:"Jem — EUA (1985)", tipo:"Desenho", emoji:"🎸", q:"Jem and the Holograms 1985", nota:"Estrela do pop com identidade secreta. 'Jem is truly outrageous!'", yt:"Jem e as Hologramas episódio completo dublado" }
+      ]},
+      { cat:"📼 Séries live-action", items:[
+        { nome:"Punky, a Levada da Breca", orig:"Punky Brewster — EUA (1984)", tipo:"Série", emoji:"🌈", q:"Punky Brewster",
+          criacao:"Sitcom sobre uma menina abandonada acolhida por um senhor rabugento; famosa pelo estilo colorido e os tênis diferentes.",
+          fim:"Terminou em 1988; teve desenho e um revival com a atriz original em 2021.",
+          elenco:"Soleil Moon Frye (Punky) virou atriz/diretora e retomou a personagem.",
+          yt:"Punky a levada da breca episódio completo dublado" },
+        { nome:"MacGyver", orig:"MacGyver — EUA (1985)", tipo:"Série", emoji:"🔧", q:"MacGyver 1985",
+          criacao:"Um agente que resolve tudo com engenhosidade, um canivete suíço e fita adesiva, evitando armas de fogo.",
+          fim:"Foi até 1992; ganhou reboot (2016–2021).",
+          elenco:"Richard Dean Anderson aposentou-se da atuação; virou piada nos Simpsons.",
+          yt:"MacGyver episódio completo dublado anos 80" },
+        { nome:"Esquadrão Classe A", orig:"The A-Team — EUA (1983)", tipo:"Série", emoji:"🚐", q:"The A-Team série",
+          criacao:"Ex-militares foragidos viram mercenários do bem, com Hannibal e o inesquecível B.A. Baracus (Mr. T).",
+          fim:"Terminou em 1987; ganhou filme em 2010.",
+          elenco:"George Peppard (Hannibal) †1994. Mr. T superou um câncer e virou ícone pop.",
+          yt:"Esquadrão Classe A The A-Team episódio completo dublado" }
+      ]}
     ]
   },
 
   "90s": {
     label: "90s",
-    desc: "dir anos90 /p:desenhos-e-series --executa MERENDA-DA-TARDE.EXE",
-    items: [
-      {
-        nome:"Dragon Ball Z", orig:"Japão (1989)", tipo:"Anime", emoji:"🐉",
-        criacao:"Continuação de Dragon Ball, do mangá de Akira Toriyama; Goku e os Guerreiros Z defendem a Terra em batalhas cada vez mais épicas (e transformações Super Saiyajin).",
-        fim:"O anime clássico terminou em 1996; a franquia seguiu com DBGT, Kai e Dragon Ball Super. Continua gerando filmes e jogos.",
-        elenco:"O criador Akira Toriyama faleceu em março de 2024, comovendo o mundo. Wendel Bezerra, voz brasileira do Goku, virou celebridade.",
-        yt:"Dragon Ball Z episódio completo dublado"
-      },
-      {
-        nome:"Pokémon", orig:"Japão (1997)", tipo:"Anime", emoji:"⚡",
-        criacao:"Nascido dos games da Game Freak/Nintendo, o anime segue Ash Ketchum e Pikachu na jornada para ser 'o melhor treinador'. 'Gotta catch 'em all!'",
-        fim:"Ash finalmente venceu e se aposentou como protagonista em 2023, após 25 anos, dando lugar a novos personagens.",
-        elenco:"Satoshi Tajiri, criador dos games, segue na Game Freak. A franquia Pokémon é a mídia de maior faturamento da história.",
-        yt:"Pokémon primeira temporada episódio completo dublado"
-      },
-      {
-        nome:"Cavaleiros do Zodíaco (auge no Brasil)", orig:"Saint Seiya — exibição Manchete (1994)", tipo:"Anime", emoji:"🔥",
-        criacao:"Mesmo dos anos 80 no Japão, explodiu no Brasil na Rede Manchete em 1994/96, criando a primeira grande febre otaku nacional.",
-        fim:"A exibição da saga clássica marcou uma geração e impulsionou o mercado de animes no país.",
-        elenco:"Gerou o CDZ, remakes e a base de fãs que sustenta os eventos geek brasileiros até hoje.",
-        yt:"Cavaleiros do Zodíaco saga de Hades episódio completo dublado"
-      },
-      {
-        nome:"Os Simpsons", orig:"The Simpsons — EUA (1989)", tipo:"Desenho", emoji:"🍩",
-        criacao:"Criado por Matt Groening a partir de esquetes do 'The Tracey Ullman Show', a família amarela de Springfield virou a maior sátira da TV.",
-        fim:"Não terminou! É a série de animação em horário nobre mais longeva da história, ainda no ar após 30+ temporadas.",
-        elenco:"Matt Groening segue produzindo. Os dubladores originais (Dan Castellaneta, Nancy Cartwright) continuam há mais de três décadas.",
-        yt:"Os Simpsons episódio completo dublado temporadas clássicas"
-      },
-      {
-        nome:"Pica-Pau (auge na TV brasileira)", orig:"Woody Woodpecker — EUA", tipo:"Desenho", emoji:"🐦",
-        criacao:"Criado por Walter Lantz nos anos 40, o pica-pau de risada estridente virou fenômeno nas tardes da TV brasileira nos anos 90 pela SBT.",
-        fim:"Os curtas clássicos rodaram por décadas; teve nova série CGI em 2018 e um filme live-action em 2017.",
-        elenco:"Walter Lantz faleceu em 1994. A risada 'ha-ha-ha-HA-ha' é uma das mais reconhecíveis do mundo.",
-        yt:"Pica-Pau desenho clássico episódios completo dublado"
-      },
-      {
-        nome:"Chaves (fenômeno eterno no SBT)", orig:"El Chavo — exibição SBT (1984+)", tipo:"Série", emoji:"📺",
-        criacao:"Reprisado sem parar pelo SBT desde os anos 80, virou parte da rotina de gerações inteiras de brasileiros nos anos 90.",
-        fim:"Saiu do ar em 2020 por disputa de direitos, mas voltou a ser negociado. É cultura pop no Brasil.",
-        elenco:"Ver retrospecto na década de 70. Chespirito faleceu em 2014.",
-        yt:"Chaves melhores momentos episódio completo dublado"
-      },
-      {
-        nome:"Malhação (1ª geração)", orig:"Brasil — TV Globo (1995)", tipo:"Novela teen", emoji:"🏋️",
-        criacao:"A Globo criou uma novela diária para adolescentes ambientada numa academia/escola, renovando o elenco a cada temporada.",
-        fim:"Foi ao ar por incríveis 25 anos, até 2020, revelando dezenas de atores famosos.",
-        elenco:"Foi trampolim para nomes como Cauã Reymond, Sophie Charlotte, Bruno Gagliasso e muitos outros astros da TV brasileira.",
-        yt:"Malhação anos 90 primeira temporada capítulos"
-      },
-      {
-        nome:"Power Rangers", orig:"Mighty Morphin Power Rangers — EUA/Japão (1993)", tipo:"Série", emoji:"🦖",
-        criacao:"Haim Saban adaptou cenas de luta do japonês 'Super Sentai' com atores americanos; cinco jovens viram guerreiros coloridos com Zords gigantes.",
-        fim:"A franquia nunca parou — muda de tema a cada ano e segue em produção décadas depois.",
-        elenco:"Jason David Frank (o Tommy/Ranger Verde) faleceu em 2022, comovendo os fãs. O elenco original se reúne em convenções.",
-        yt:"Power Rangers Mighty Morphin episódio completo dublado"
-      },
-      {
-        nome:"Animaniacs", orig:"EUA (1993)", tipo:"Desenho", emoji:"🎬",
-        criacao:"Produzido por Steven Spielberg, trouxe os irmãos Warner (Yakko, Wakko e Dot) e os ratos Pinky e Cérebro num humor rápido cheio de piadas para adultos.",
-        fim:"A série clássica foi até 1998; ganhou reboot no Hulu (2020–2023).",
-        elenco:"Rob Paulsen e Maurice LaMarche (as vozes de Pinky e Cérebro) retornaram no reboot. Virou clássico cult.",
-        yt:"Animaniacs episódio completo dublado anos 90"
-      },
-      {
-        nome:"Batman: A Série Animada", orig:"Batman: The Animated Series — EUA (1992)", tipo:"Desenho", emoji:"🦇",
-        criacao:"Criada por Bruce Timm e Eric Radomski, com estética 'dark deco' sombria, é considerada a melhor adaptação animada do Homem-Morcego.",
-        fim:"Foi até 1995 e gerou todo o 'Universo Animado da DC' (Superman, Liga da Justiça).",
-        elenco:"Kevin Conroy, a voz definitiva do Batman por 30 anos, faleceu em 2022. Mark Hamill (o Coringa) segue vivo e ativo.",
-        yt:"Batman série animada 1992 episódio completo dublado"
-      },
-      {
-        nome:"Todo Mundo Odeia o Chris? (não!) — X-Men", orig:"X-Men: The Animated Series — EUA (1992)", tipo:"Desenho", emoji:"❌",
-        criacao:"O desenho que apresentou os mutantes da Marvel a uma geração inteira, com aquela abertura de guitarra inesquecível.",
-        fim:"Foi até 1997; ganhou continuação direta 'X-Men '97' no Disney+ em 2024, sucesso de crítica.",
-        elenco:"Vários dubladores originais voltaram para 'X-Men '97'. A abertura instrumental virou hino nerd.",
-        yt:"X-Men série animada 1992 episódio completo dublado"
-      },
-      {
-        nome:"Fresh Prince / Um Maluco no Pedaço", orig:"The Fresh Prince of Bel-Air — EUA (1990)", tipo:"Série", emoji:"🤴",
-        criacao:"Sitcom que lançou Will Smith como um jovem da Filadélfia enviado para morar com tios ricos em Bel-Air.",
-        fim:"Terminou em 1996 e lançou a carreira de cinema de Will Smith; ganhou reboot dramático 'Bel-Air' em 2022.",
-        elenco:"Will Smith virou megastar de Hollywood. James Avery (Tio Phil) faleceu em 2013. O elenco fez uma emocionante reunião em 2020.",
-        yt:"Um Maluco no Pedaço Fresh Prince episódio completo dublado"
-      },
-      {
-        nome:"Yu Yu Hakusho", orig:"Japão (1992)", tipo:"Anime", emoji:"👊",
-        criacao:"Do mangá de Yoshihiro Togashi: o delinquente Yusuke Urameshi morre salvando uma criança e volta como detetive sobrenatural, enfrentando demônios em torneios de luta.",
-        fim:"O anime teve 112 episódios (até 1995). Virou febre no Brasil pela Manchete/Globo e ganhou uma série live-action na Netflix em 2023.",
-        elenco:"Togashi depois criou 'Hunter x Hunter'. O 'Reigun' (Pistola Espiritual) do Yusuke é um dos golpes mais imitados pela criançada.",
-        yt:"Yu Yu Hakusho episódio completo dublado"
-      },
-      {
-        nome:"Digimon Adventure", orig:"Japão (1999)", tipo:"Anime", emoji:"🦖",
-        criacao:"Nascido dos bichinhos virtuais da Bandai, o anime leva um grupo de crianças ao Mundo Digital, onde cada uma ganha um Digimon parceiro que 'digievolui' para proteger os dois mundos.",
-        fim:"A primeira temporada foi até 2000; a franquia seguiu com várias sequências e o filme nostálgico 'Last Evolution' (2020).",
-        elenco:"Frequentemente comparado (e rivalizado) com Pokémon, tem base de fãs fiel e músicas de abertura cultuadas ('Brave Heart').",
-        yt:"Digimon Adventure primeira temporada episódio completo dublado"
-      },
-      {
-        nome:"Samurai X", orig:"Rurouni Kenshin — Japão (1996)", tipo:"Anime", emoji:"⚔️",
-        criacao:"Do mangá de Nobuhiro Watsuki: Kenshin Himura, um ex-assassino da era Meiji, jura nunca mais matar e vaga com uma espada de lâmina invertida buscando redenção.",
-        fim:"O anime foi até 1998, seguido de OVAs aclamados. Ganhou filmes live-action de sucesso e um remake em 2023.",
-        elenco:"Watsuki segue como mangaká. A cicatriz em X no rosto de Kenshin e o bordão 'oro?' são marcas registradas.",
-        yt:"Samurai X Rurouni Kenshin episódio completo dublado"
-      }
+    desc: "dir anos90 /p:por-categoria --executa MERENDA-DA-TARDE.EXE",
+    groups: [
+      { cat:"⚔️ Animes", items:[
+        { nome:"Dragon Ball Z", orig:"Japão (1989)", tipo:"Anime", emoji:"🐉", q:"Dragon Ball Z",
+          criacao:"Do mangá de Akira Toriyama; Goku e os Guerreiros Z defendem a Terra em batalhas épicas e transformações Super Saiyajin.",
+          fim:"O anime clássico terminou em 1996; seguiu com Kai e Dragon Ball Super.",
+          elenco:"Toriyama faleceu em março de 2024, comovendo o mundo. Wendel Bezerra (voz do Goku) virou celebridade.",
+          yt:"Dragon Ball Z episódio completo dublado" },
+        { nome:"Pokémon", orig:"Japão (1997)", tipo:"Anime", emoji:"⚡", q:"Pokémon anime",
+          criacao:"Nascido dos games da Game Freak/Nintendo, segue Ash e Pikachu na jornada para ser 'o melhor treinador'.",
+          fim:"Ash venceu e se aposentou como protagonista em 2023, após 25 anos.",
+          elenco:"Satoshi Tajiri segue na Game Freak. Pokémon é a mídia de maior faturamento da história.",
+          yt:"Pokémon primeira temporada episódio completo dublado" },
+        { nome:"Cavaleiros do Zodíaco (auge no Brasil)", orig:"exibição Manchete (1994)", tipo:"Anime", emoji:"🔥", q:"Saint Seiya",
+          criacao:"Mesmo dos anos 80 no Japão, explodiu no Brasil na Manchete em 1994/96, criando a primeira febre otaku nacional.",
+          fim:"A saga clássica marcou uma geração e impulsionou o mercado de animes no país.",
+          elenco:"Sustenta os eventos geek brasileiros até hoje.",
+          yt:"Cavaleiros do Zodíaco saga de Hades episódio completo dublado" },
+        { nome:"Yu Yu Hakusho", orig:"Japão (1992)", tipo:"Anime", emoji:"👊", q:"Yu Yu Hakusho",
+          criacao:"Do mangá de Yoshihiro Togashi: o delinquente Yusuke morre salvando uma criança e volta como detetive sobrenatural.",
+          fim:"Teve 112 episódios; virou febre no Brasil e ganhou live-action na Netflix em 2023.",
+          elenco:"Togashi depois criou 'Hunter x Hunter'. O 'Reigun' é golpe imitado por toda criança.",
+          yt:"Yu Yu Hakusho episódio completo dublado" },
+        { nome:"Digimon Adventure", orig:"Japão (1999)", tipo:"Anime", emoji:"🦖", q:"Digimon Adventure",
+          criacao:"Dos bichinhos virtuais da Bandai; crianças vão ao Mundo Digital com parceiros Digimon que 'digievoluem'.",
+          fim:"A 1ª temporada foi até 2000; teve várias sequências e o filme 'Last Evolution' (2020).",
+          elenco:"Eterno rival do Pokémon, com aberturas cultuadas ('Brave Heart').",
+          yt:"Digimon Adventure primeira temporada episódio completo dublado" },
+        { nome:"Samurai X", orig:"Rurouni Kenshin — Japão (1996)", tipo:"Anime", emoji:"⚔️", q:"Rurouni Kenshin",
+          criacao:"Do mangá de Nobuhiro Watsuki: Kenshin, um ex-assassino, jura nunca mais matar e vaga com uma espada de lâmina invertida.",
+          fim:"Foi até 1998, com OVAs aclamados; teve filmes live-action e remake em 2023.",
+          elenco:"A cicatriz em X e o 'oro?' são marcas registradas.",
+          yt:"Samurai X Rurouni Kenshin episódio completo dublado" }
+      ]},
+      { cat:"🦸 Super-heróis (era de ouro DC/Marvel)", items:[
+        { nome:"Batman: A Série Animada", orig:"Batman: TAS — EUA (1992)", tipo:"Desenho", emoji:"🦇", q:"Batman The Animated Series",
+          criacao:"De Bruce Timm e Eric Radomski, com estética 'dark deco', é tida como a melhor adaptação animada do Batman.",
+          fim:"Foi até 1995 e gerou todo o Universo Animado da DC.",
+          elenco:"Kevin Conroy, a voz definitiva do Batman por 30 anos, †2022. Mark Hamill (Coringa) segue ativo.",
+          yt:"Batman série animada 1992 episódio completo dublado" },
+        { nome:"X-Men: A Série Animada", orig:"X-Men — EUA (1992)", tipo:"Desenho", emoji:"❌", q:"X-Men The Animated Series 1992",
+          criacao:"O desenho que apresentou os mutantes da Marvel a uma geração, com aquela abertura de guitarra.",
+          fim:"Foi até 1997; ganhou continuação direta 'X-Men '97' no Disney+ em 2024.",
+          elenco:"Vários dubladores voltaram para 'X-Men '97'. A abertura virou hino nerd.",
+          yt:"X-Men série animada 1992 episódio completo dublado" },
+        { nome:"Superman: A Série Animada", orig:"EUA (1996)", tipo:"Desenho", emoji:"🦸", q:"Superman The Animated Series 1996", nota:"Irmã do Batman animado; parte do Universo Animado da DC.", yt:"Superman série animada 1996 episódio completo dublado" },
+        { nome:"Homem-Aranha: A Série Animada", orig:"Spider-Man — EUA (1994)", tipo:"Desenho", emoji:"🕷️", q:"Spider-Man The Animated Series 1994", nota:"O Aranha dos anos 90 que marcou uma geração.", yt:"Homem-Aranha série animada 1994 episódio completo dublado" },
+        { nome:"Capitão Planeta", orig:"Captain Planet — EUA (1990)", tipo:"Desenho", emoji:"🌎", q:"Captain Planet", nota:"'Com os poderes combinados...' — o herói ecológico.", yt:"Capitão Planeta episódio completo dublado" },
+        { nome:"Gárgulas", orig:"Gargoyles — EUA (1994)", tipo:"Desenho", emoji:"🗿", q:"Gargoyles 1994", nota:"Criaturas de pedra que ganham vida à noite; culto até hoje.", yt:"Gárgulas Gargoyles episódio completo dublado" },
+        { nome:"Batman do Futuro", orig:"Batman Beyond — EUA (1999)", tipo:"Desenho", emoji:"🦇", q:"Batman Beyond", nota:"Um novo Batman adolescente numa Gotham futurista.", yt:"Batman do Futuro episódio completo dublado" }
+      ]},
+      { cat:"😂 Cartoon Network & Nickelodeon", items:[
+        { nome:"Os Simpsons", orig:"The Simpsons — EUA (1989)", tipo:"Desenho", emoji:"🍩", q:"The Simpsons",
+          criacao:"De Matt Groening, a família amarela de Springfield virou a maior sátira da TV.",
+          fim:"Não terminou! É a animação em horário nobre mais longeva da história.",
+          elenco:"Groening segue produzindo; os dubladores originais estão há 30+ anos.",
+          yt:"Os Simpsons episódio completo dublado temporadas clássicas" },
+        { nome:"Animaniacs", orig:"EUA (1993)", tipo:"Desenho", emoji:"🎬", q:"Animaniacs 1993",
+          criacao:"Produzido por Spielberg, trouxe os irmãos Warner e Pinky e Cérebro num humor rápido cheio de piadas para adultos.",
+          fim:"A série clássica foi até 1998; ganhou reboot no Hulu (2020–2023).",
+          elenco:"Rob Paulsen e Maurice LaMarche voltaram no reboot.",
+          yt:"Animaniacs episódio completo dublado anos 90" },
+        { nome:"O Laboratório de Dexter", orig:"Dexter's Laboratory — 1996", tipo:"Desenho", emoji:"🧪", q:"Dexter's Laboratory", nota:"O menino gênio e a irmã DeeDee, de Genndy Tartakovsky.", yt:"Laboratório de Dexter episódio completo dublado" },
+        { nome:"Johnny Bravo", orig:"EUA (1997)", tipo:"Desenho", emoji:"💪", q:"Johnny Bravo", nota:"O galã cafona de topete e óculos escuros.", yt:"Johnny Bravo episódio completo dublado" },
+        { nome:"Vaca e Frango", orig:"Cow and Chicken — 1997", tipo:"Desenho", emoji:"🐄", q:"Cow and Chicken", nota:"Os irmãos improváveis e o Bunda Vermelha.", yt:"Vaca e Frango episódio completo dublado" },
+        { nome:"Coragem, o Cão Covarde", orig:"Courage the Cowardly Dog — 1999", tipo:"Desenho", emoji:"🐶", q:"Courage the Cowardly Dog", nota:"O cãozinho medroso no meio do nada com Muriel e Eustáquio.", yt:"Coragem o cão covarde episódio completo dublado" },
+        { nome:"Rugrats: Os Anjinhos", orig:"Rugrats — 1991", tipo:"Desenho", emoji:"👶", q:"Rugrats", nota:"O mundo visto pelos bebês Tommy, Chuckie e cia.", yt:"Rugrats os anjinhos episódio completo dublado" },
+        { nome:"Doug", orig:"EUA (1991)", tipo:"Desenho", emoji:"📓", q:"Doug Nickelodeon", nota:"O diário do adolescente Doug Funnie e o cão Porkchop.", yt:"Doug desenho Nickelodeon episódio completo dublado" },
+        { nome:"Hey Arnold!", orig:"EUA (1996)", tipo:"Desenho", emoji:"⚽", q:"Hey Arnold", nota:"O menino cabeça de bola e a vida na cidade grande.", yt:"Hey Arnold episódio completo dublado" },
+        { nome:"Pinky e o Cérebro", orig:"Pinky and the Brain — 1995", tipo:"Desenho", emoji:"🐭", q:"Pinky and the Brain", nota:"Dois ratos de laboratório tentando dominar o mundo toda noite.", yt:"Pinky e o Cérebro episódio completo dublado" },
+        { nome:"Tiny Toons", orig:"Tiny Toon Adventures — 1990", tipo:"Desenho", emoji:"🐰", q:"Tiny Toon Adventures", nota:"Os pequenos aprendizes dos Looney Tunes; produção de Spielberg.", yt:"Tiny Toons episódio completo dublado" }
+      ]},
+      { cat:"📼 Séries, novelas teen & tokusatsu", items:[
+        { nome:"Power Rangers", orig:"Mighty Morphin — EUA/Japão (1993)", tipo:"Série", emoji:"🦖", q:"Mighty Morphin Power Rangers",
+          criacao:"Haim Saban adaptou cenas de luta do japonês 'Super Sentai' com atores americanos; cinco jovens viram guerreiros coloridos com Zords.",
+          fim:"A franquia nunca parou — muda de tema a cada ano.",
+          elenco:"Jason David Frank (Tommy, o Ranger Verde) faleceu em 2022, comovendo os fãs.",
+          yt:"Power Rangers Mighty Morphin episódio completo dublado" },
+        { nome:"Um Maluco no Pedaço", orig:"The Fresh Prince of Bel-Air — EUA (1990)", tipo:"Série", emoji:"🤴", q:"Fresh Prince of Bel-Air",
+          criacao:"Sitcom que lançou Will Smith como um jovem da Filadélfia enviado para morar com tios ricos em Bel-Air.",
+          fim:"Terminou em 1996 e lançou a carreira de cinema do Will; teve reboot 'Bel-Air' em 2022.",
+          elenco:"Will Smith virou megastar. James Avery (Tio Phil) †2013. O elenco fez uma reunião emocionante em 2020.",
+          yt:"Um Maluco no Pedaço Fresh Prince episódio completo dublado" },
+        { nome:"Malhação (1ª geração)", orig:"Brasil — TV Globo (1995)", tipo:"Novela teen", emoji:"🏋️", q:"Malhação novela",
+          criacao:"A Globo criou uma novela diária para adolescentes numa academia/escola, renovando o elenco a cada temporada.",
+          fim:"Ficou no ar por 25 anos, até 2020, revelando dezenas de atores.",
+          elenco:"Trampolim para Cauã Reymond, Sophie Charlotte, Bruno Gagliasso e muitos outros.",
+          yt:"Malhação anos 90 primeira temporada capítulos" },
+        { nome:"Chaves (fenômeno no SBT)", orig:"exibição SBT (anos 90)", tipo:"Série", emoji:"📺", q:"Chaves série de televisão", nota:"Reprisado sem parar pelo SBT, virou rotina de gerações inteiras.", yt:"Chaves melhores momentos episódio completo dublado" },
+        { nome:"Pica-Pau (auge no SBT)", orig:"Woody Woodpecker — reprises anos 90", tipo:"Desenho", emoji:"🐦", q:"Pica-Pau Woody Woodpecker", nota:"Dominou as tardes do SBT nos anos 90.", yt:"Pica-Pau desenho clássico episódio completo dublado" }
+      ]}
     ]
   },
 
   "2000s": {
     label: "2000s",
-    desc: "dir anos2000 /p:desenhos-e-series --conecta BANDA-LARGA.EXE",
-    items: [
-      {
-        nome:"Bob Esponja Calça Quadrada", orig:"SpongeBob SquarePants — EUA (1999)", tipo:"Desenho", emoji:"🧽",
-        criacao:"Criado pelo biólogo marinho e animador Stephen Hillenburg, conta a vida do otimista Bob Esponja na Fenda do Biquíni, trabalhando no Siri Cascudo.",
-        fim:"Não terminou — segue no ar e virou o desenho mais rentável da Nickelodeon, com filmes e spin-offs.",
-        elenco:"Stephen Hillenburg faleceu em 2018 de ELA. Tom Kenny, a voz do Bob Esponja, continua no papel desde 1999.",
-        yt:"Bob Esponja episódio completo dublado primeiras temporadas"
-      },
-      {
-        nome:"Naruto", orig:"Japão (2002)", tipo:"Anime", emoji:"🍥",
-        criacao:"Do mangá de Masashi Kishimoto, acompanha o ninja hiperativo Naruto Uzumaki, hospedeiro de uma raposa demônio, que sonha em ser Hokage.",
-        fim:"Naruto Shippuden terminou em 2017; a história continua na sequência 'Boruto', focada no filho dele.",
-        elenco:"Masashi Kishimoto segue supervisionando a franquia. Naruto virou um dos animes mais vendidos da história.",
-        yt:"Naruto clássico episódio completo dublado"
-      },
-      {
-        nome:"Ben 10", orig:"EUA (2005)", tipo:"Desenho", emoji:"⌚",
-        criacao:"Criado pelo grupo 'Man of Action' para o Cartoon Network; um garoto acha o Omnitrix, um relógio alienígena que o transforma em 10 heróis diferentes.",
-        fim:"A série clássica gerou várias sequências (Força Alienígena, Supremacia) e um reboot em 2016.",
-        elenco:"A franquia segue ativa no Cartoon Network. Tara Strong dublou o Ben original.",
-        yt:"Ben 10 clássico 2005 episódio completo dublado"
-      },
-      {
-        nome:"Avatar: A Lenda de Aang", orig:"Avatar: The Last Airbender — EUA (2005)", tipo:"Desenho", emoji:"🌊",
-        criacao:"Criado por Michael DiMartino e Bryan Konietzko, mistura animação ocidental com estética asiática; Aang deve dominar os quatro elementos e trazer paz ao mundo.",
-        fim:"Terminou em 2008 com um final aclamado; ganhou sequência ('A Lenda de Korra') e uma versão live-action na Netflix em 2024.",
-        elenco:"Os criadores fundaram o Avatar Studios para expandir o universo. É considerado uma das melhores animações de todos os tempos.",
-        yt:"Avatar a lenda de Aang episódio completo dublado"
-      },
-      {
-        nome:"Todo Mundo Odeia o Chris", orig:"Everybody Hates Chris — EUA (2005)", tipo:"Série", emoji:"😖",
-        criacao:"Narrada e inspirada na adolescência do comediante Chris Rock, retrata um adolescente negro numa escola de maioria branca no Brooklyn dos anos 80.",
-        fim:"Terminou em 2009; virou sucesso absoluto de reprises no Brasil. Uma versão animada foi anunciada.",
-        elenco:"Tyler James Williams (o jovem Chris) hoje brilha na série premiada 'Abbott Elementary'. Chris Rock segue como um dos maiores comediantes do mundo.",
-        yt:"Todo Mundo Odeia o Chris episódio completo dublado"
-      },
-      {
-        nome:"Chaves em Desenho Animado", orig:"El Chavo Animado — México (2006)", tipo:"Desenho", emoji:"✏️",
-        criacao:"Versão animada da turma do Chaves, supervisionada por Chespirito, adaptando episódios clássicos em traço colorido.",
-        fim:"Produzido até 2014; manteve o Chaves vivo para a nova geração após a série live-action sair do ar.",
-        elenco:"Chespirito faleceu em 2014, ano em que o desenho também encerrou.",
-        yt:"Chaves em desenho animado episódio completo dublado"
-      },
-      {
-        nome:"Kim Possible", orig:"EUA (2002)", tipo:"Desenho", emoji:"🕵️‍♀️",
-        criacao:"Do Disney Channel: uma adolescente comum que também é uma agente secreta salvando o mundo com o desastrado amigo Ron e o rato-toupeira Rufus.",
-        fim:"Terminou em 2007; ganhou filme live-action da Disney em 2019.",
-        elenco:"Christy Carlson Romano (voz da Kim) seguiu carreira e virou youtuber falando dos bastidores da Disney.",
-        yt:"Kim Possible episódio completo dublado"
-      },
-      {
-        nome:"As Meninas Superpoderosas", orig:"The Powerpuff Girls — EUA (1998)", tipo:"Desenho", emoji:"💗",
-        criacao:"Criado por Craig McCracken; Lindinha, Florzinha e Docinho nascem de 'açúcar, tempero e tudo que há de bom' mais o Elemento X, protegendo a Cidade de Townsville.",
-        fim:"A série clássica foi até 2005; ganhou reboot em 2016 e especiais.",
-        elenco:"Craig McCracken depois criou 'A Mansão Foster'. A estética das meninas virou ícone pop e de moda.",
-        yt:"Meninas Superpoderosas clássico episódio completo dublado"
-      },
-      {
-        nome:"Lizzie McGuire", orig:"EUA (2001)", tipo:"Série", emoji:"💃",
-        criacao:"Sitcom do Disney Channel misturando cenas reais com uma versão animada da protagonista que expressava seus pensamentos.",
-        fim:"Terminou em 2004 e ganhou um filme; um revival foi cancelado em 2020.",
-        elenco:"Hilary Duff (Lizzie) virou estrela pop e seguiu na TV (Younger, How I Met Your Father).",
-        yt:"Lizzie McGuire episódio completo dublado"
-      },
-      {
-        nome:"Yu-Gi-Oh!", orig:"Japão (2000)", tipo:"Anime", emoji:"🃏",
-        criacao:"Do mangá de Kazuki Takahashi, sobre Yugi e um antigo faraó que resolvem tudo com um jogo de cartas mágico — que virou um card game real de sucesso mundial.",
-        fim:"A série Duel Monsters foi até 2004; a franquia seguiu com GX, 5D's e outras. O card game continua imenso.",
-        elenco:"Kazuki Takahashi, o criador, faleceu em 2022 em um acidente ao tentar salvar pessoas no mar — morreu como um herói.",
-        yt:"Yu-Gi-Oh Duel Monsters episódio completo dublado"
-      },
-      {
-        nome:"Zack e Cody: Gêmeos em Ação", orig:"The Suite Life of Zack & Cody — EUA (2005)", tipo:"Série", emoji:"🏨",
-        criacao:"Sitcom do Disney Channel sobre gêmeos travessos que moram num hotel de luxo onde a mãe canta.",
-        fim:"Terminou em 2008 e ganhou spin-off ('Zack e Cody: Gêmeos a Bordo').",
-        elenco:"Dylan e Cole Sprouse cresceram; Cole Sprouse brilhou na série 'Riverdale'. Ambos seguem atuando.",
-        yt:"Zack e Cody gêmeos em ação episódio completo dublado"
-      },
-      {
-        nome:"Hi Hi Puffy AmiYumi / Meninas Superpoderosas... e cia.", orig:"Cartoon/Disney — anos 2000", tipo:"Desenho", emoji:"🎸",
-        criacao:"Os anos 2000 no Cartoon Network e Disney foram uma explosão criativa — de bandas animadas a séries autorais que definiram a virada do milênio.",
-        fim:"Muitas dessas séries encerraram no fim da década, dando lugar à era do streaming.",
-        elenco:"Vários criadores dessa fase hoje comandam grandes estúdios de animação.",
-        yt:"desenhos Cartoon Network anos 2000 episódios completos dublado"
-      }
+    desc: "dir anos2000 /p:por-categoria --conecta BANDA-LARGA.EXE",
+    groups: [
+      { cat:"⚔️ Animes", items:[
+        { nome:"Naruto", orig:"Japão (2002)", tipo:"Anime", emoji:"🍥", q:"Naruto anime",
+          criacao:"Do mangá de Masashi Kishimoto: o ninja hiperativo Naruto, hospedeiro de uma raposa demônio, sonha em ser Hokage.",
+          fim:"Shippuden terminou em 2017; segue em 'Boruto'.",
+          elenco:"Kishimoto supervisiona a franquia. Um dos animes mais vendidos da história.",
+          yt:"Naruto clássico episódio completo dublado" },
+        { nome:"Yu-Gi-Oh!", orig:"Japão (2000)", tipo:"Anime", emoji:"🃏", q:"Yu-Gi-Oh Duel Monsters",
+          criacao:"Do mangá de Kazuki Takahashi: Yugi e um faraó resolvem tudo com um jogo de cartas mágico — que virou card game real.",
+          fim:"A série Duel Monsters foi até 2004; a franquia seguiu com GX, 5D's e outras.",
+          elenco:"Takahashi faleceu em 2022 num acidente ao tentar salvar pessoas no mar — morreu como herói.",
+          yt:"Yu-Gi-Oh Duel Monsters episódio completo dublado" }
+      ]},
+      { cat:"🦸 Aventura & ação (Cartoon Network)", items:[
+        { nome:"Ben 10", orig:"EUA (2005)", tipo:"Desenho", emoji:"⌚", q:"Ben 10 2005",
+          criacao:"Do grupo 'Man of Action' para o CN; um garoto acha o Omnitrix, um relógio alienígena que o transforma em 10 heróis.",
+          fim:"Gerou várias sequências e um reboot em 2016.",
+          elenco:"Segue ativa no CN. Tara Strong dublou o Ben original.",
+          yt:"Ben 10 clássico 2005 episódio completo dublado" },
+        { nome:"Avatar: A Lenda de Aang", orig:"EUA (2005)", tipo:"Desenho", emoji:"🌊", q:"Avatar The Last Airbender",
+          criacao:"De DiMartino e Konietzko, mistura animação ocidental com estética asiática; Aang deve dominar os quatro elementos.",
+          fim:"Terminou em 2008 com final aclamado; teve 'A Lenda de Korra' e live-action na Netflix (2024).",
+          elenco:"Os criadores fundaram o Avatar Studios. Tida como uma das melhores animações de sempre.",
+          yt:"Avatar a lenda de Aang episódio completo dublado" },
+        { nome:"As Meninas Superpoderosas", orig:"The Powerpuff Girls — EUA (1998)", tipo:"Desenho", emoji:"💗", q:"Powerpuff Girls",
+          criacao:"De Craig McCracken; Lindinha, Florzinha e Docinho nascem de 'açúcar, tempero e o Elemento X', protegendo Townsville.",
+          fim:"A clássica foi até 2005; teve reboot em 2016.",
+          elenco:"McCracken depois criou 'A Mansão Foster'. A estética virou ícone pop.",
+          yt:"Meninas Superpoderosas clássico episódio completo dublado" }
+      ]},
+      { cat:"🏰 Disney Channel & séries teen", items:[
+        { nome:"Kim Possible", orig:"EUA (2002)", tipo:"Desenho", emoji:"🕵️‍♀️", q:"Kim Possible",
+          criacao:"Do Disney Channel: uma adolescente comum que também é agente secreta, com o desastrado Ron e o rato-toupeira Rufus.",
+          fim:"Terminou em 2007; ganhou filme live-action em 2019.",
+          elenco:"Christy Carlson Romano (voz da Kim) virou youtuber falando dos bastidores da Disney.",
+          yt:"Kim Possible episódio completo dublado" },
+        { nome:"Lizzie McGuire", orig:"EUA (2001)", tipo:"Série", emoji:"💃", q:"Lizzie McGuire",
+          criacao:"Sitcom do Disney Channel misturando cena real com uma versão animada da protagonista.",
+          fim:"Terminou em 2004 e ganhou um filme; revival cancelado em 2020.",
+          elenco:"Hilary Duff virou estrela pop e seguiu na TV.",
+          yt:"Lizzie McGuire episódio completo dublado" },
+        { nome:"Zack e Cody: Gêmeos em Ação", orig:"The Suite Life — EUA (2005)", tipo:"Série", emoji:"🏨", q:"The Suite Life of Zack and Cody",
+          criacao:"Sitcom do Disney Channel sobre gêmeos travessos que moram num hotel de luxo.",
+          fim:"Terminou em 2008 e ganhou spin-off ('Gêmeos a Bordo').",
+          elenco:"Dylan e Cole Sprouse cresceram; Cole brilhou em 'Riverdale'.",
+          yt:"Zack e Cody gêmeos em ação episódio completo dublado" }
+      ]},
+      { cat:"😂 Comédia & fenômenos", items:[
+        { nome:"Bob Esponja Calça Quadrada", orig:"SpongeBob — EUA (1999)", tipo:"Desenho", emoji:"🧽", q:"SpongeBob SquarePants",
+          criacao:"Do biólogo marinho Stephen Hillenburg; a vida do otimista Bob Esponja na Fenda do Biquíni, no Siri Cascudo.",
+          fim:"Não terminou — é o desenho mais rentável da Nickelodeon.",
+          elenco:"Hillenburg faleceu em 2018 de ELA. Tom Kenny dubla o Bob desde 1999.",
+          yt:"Bob Esponja episódio completo dublado primeiras temporadas" },
+        { nome:"Todo Mundo Odeia o Chris", orig:"Everybody Hates Chris — EUA (2005)", tipo:"Série", emoji:"😖", q:"Everybody Hates Chris",
+          criacao:"Inspirada na adolescência de Chris Rock, retrata um adolescente negro numa escola de maioria branca no Brooklyn dos anos 80.",
+          fim:"Terminou em 2009; sucesso absoluto de reprises no Brasil. Uma versão animada foi anunciada.",
+          elenco:"Tyler James Williams (o jovem Chris) hoje brilha em 'Abbott Elementary'. Chris Rock segue gigante.",
+          yt:"Todo Mundo Odeia o Chris episódio completo dublado" },
+        { nome:"Chaves em Desenho Animado", orig:"El Chavo Animado — México (2006)", tipo:"Desenho", emoji:"✏️", q:"El Chavo animado",
+          criacao:"Versão animada da turma do Chaves, supervisionada por Chespirito.",
+          fim:"Produzido até 2014; manteve o Chaves vivo para a nova geração.",
+          elenco:"Chespirito faleceu em 2014, ano em que o desenho encerrou.",
+          yt:"Chaves em desenho animado episódio completo dublado" }
+      ]}
     ]
   },
 
   "manchete": {
     label: "TV Manchete",
     desc: "dir manchete /p:tokusatsu-e-animes --sintoniza CANAL-6-UHF.SYS",
-    items: [
-      {
-        nome:"O Fantástico Jaspion", orig:"Kyojuu Tokusou Juspion — Japão (1985)", ano:"1988", tipo:"Tokusatsu", emoji:"🤖",
-        criacao:"Série da Toei em que Jaspion, um guerreiro criado por um robô, cruza o espaço com sua nave e o robô gigante Daileon para impedir Satan Goss e o monstro Gohkin de destruir a galáxia. Estreou na Rede Manchete em 1988.",
-        fim:"Teve 46 episódios. Não emplacou tanto no Japão, mas no Brasil virou FENÔMENO — audiência recorde na Manchete e uma legião de fãs que dura até hoje.",
-        elenco:"O ator Hikaru Kurosaki (Jaspion) e o dublador brasileiro Wellington Lima entraram para a memória afetiva do país; o personagem visitou o Brasil em eventos décadas depois.",
-        yt:"Jaspion episódio completo dublado Rede Manchete"
-      },
-      {
-        nome:"Changeman", orig:"Dengeki Sentai Changeman — Japão (1985)", ano:"1989", tipo:"Tokusatsu", emoji:"⚡",
-        criacao:"Um dos Super Sentai clássicos: cinco jovens da Força de Defesa da Terra recebem o poder das feras míticas para enfrentar o Império Gozma. Fez enorme sucesso na Manchete.",
-        fim:"Foram 55 episódios. A franquia Super Sentai, da qual faz parte, viraria a base dos Power Rangers anos depois.",
-        elenco:"O elenco japonês seguiu carreira em dramas e tokusatsu; no Brasil, a marchinha de abertura 'Change! Changeman!' é cantada de cor por quem viveu os anos 80/90.",
-        yt:"Changeman episódio completo dublado Rede Manchete"
-      },
-      {
-        nome:"Comando Estelar Flashman", orig:"Choushinsei Flashman — Japão (1986)", ano:"1989", tipo:"Tokusatsu", emoji:"🌟",
-        criacao:"Super Sentai sobre cinco crianças sequestradas e criadas em estrelas diferentes, que voltam à Terra como os Flashman para combater o Império Mess e suas experiências genéticas.",
-        fim:"Teve 50 episódios. No Brasil foi um dos tokusatsu mais amados da fase de ouro da Manchete.",
-        elenco:"Assim como os outros Sentai, virou item de colecionador e tema de reencontros de fãs em convenções geek brasileiras.",
-        yt:"Flashman episódio completo dublado Rede Manchete"
-      },
-      {
-        nome:"Jiban — O Policial de Aço", orig:"Kidou Keiji Jiban — Japão (1989)", ano:"1990", tipo:"Tokusatsu", emoji:"👮",
-        criacao:"Da linha Metal Hero: um policial morto é ressuscitado como o ciborgue Jiban para enfrentar a sinistra Empresa Neo e seus monstros criados a partir de emoções humanas.",
-        fim:"Teve 52 episódios. Estourou na Manchete e é lembrado pela transformação 'Jiban!' e pelo carro Vysor.",
-        elenco:"O bordão e a estética futurista marcaram época; a série é constantemente relembrada em retrospectivas de tokusatsu no Brasil.",
-        yt:"Jiban o policial de aço episódio completo dublado"
-      },
-      {
-        nome:"O Incrível Jiraiya", orig:"Sekai Ninja Sen Jiraiya — Japão (1988)", ano:"1990", tipo:"Tokusatsu", emoji:"🥷",
-        criacao:"Metal Hero com tema ninja: Toha Yamaji veste a armadura de Jiraiya para proteger a caixa Pako e enfrentar clãs ninjas de todo o mundo liderados por Dokusai.",
-        fim:"Teve 50 episódios. A mistura de ninjas com robôs e a família Yamaji conquistaram a molecada brasileira.",
-        elenco:"Segue cultuado; a armadura branca de Jiraiya é uma das imagens mais icônicas da era Manchete.",
-        yt:"Jiraiya episódio completo dublado Rede Manchete"
-      },
-      {
-        nome:"Black Kamen Rider", orig:"Kamen Rider Black — Japão (1987)", ano:"1991", tipo:"Tokusatsu", emoji:"🦗",
-        criacao:"Kotaro Minami é transformado no gafanhoto-ciborgue Kamen Rider Black pela seita Gorgom, e luta contra ela — inclusive contra seu irmão adotivo. Um dos Kamen Riders mais sombrios e queridos.",
-        fim:"Teve 51 episódios e a sequência 'Black RX'. No Brasil, foi febre na Manchete. Ganhou o reboot adulto 'Kamen Rider Black Sun' na Amazon em 2022.",
-        elenco:"O ator Tetsuo Kurata (Kotaro) segue ativo no Japão e já visitou o Brasil para encontrar os fãs.",
-        yt:"Kamen Rider Black episódio completo dublado"
-      },
-      {
-        nome:"Ultraman", orig:"Japão — Tsuburaya (1966)", ano:"Manchete", tipo:"Tokusatsu", emoji:"🛸",
-        criacao:"Criado por Eiji Tsuburaya, o gigante prateado de Nebulosa M78 se funde a um humano para proteger a Terra de kaijus gigantes. Fundou todo o gênero dos heróis gigantes.",
-        fim:"A franquia Ultra nunca parou — são dezenas de séries no Japão até hoje. Várias gerações passaram pela TV brasileira.",
-        elenco:"A Tsuburaya Productions segue produzindo novos Ultramans; o 'Shuwatch!' é reconhecido no mundo todo.",
-        yt:"Ultraman clássico episódio completo dublado"
-      },
-      {
-        nome:"Sailor Moon", orig:"Bishoujo Senshi Sailor Moon — Japão (1992)", ano:"1996", tipo:"Anime", emoji:"🌙",
-        criacao:"Do mangá de Naoko Takeuchi: Usagi (Serena) descobre ser uma guerreira mágica e, com as Sailors, protege a Terra em nome da Lua. Estreou na Manchete em 1996 e popularizou o gênero 'mahou shoujo' no Brasil.",
-        fim:"O anime clássico foi até 1997; ganhou o reboot 'Sailor Moon Crystal' e filmes nos anos 2010/2020.",
-        elenco:"Naoko Takeuchi segue supervisionando a franquia. 'Em nome da Lua, eu vou te castigar!' é bordão eterno.",
-        yt:"Sailor Moon clássico episódio completo dublado"
-      }
+    groups: [
+      { cat:"🤖 Tokusatsu (heróis japoneses)", items:[
+        { nome:"O Fantástico Jaspion", orig:"Kyojuu Tokusou Juspion — Japão (1985)", ano:"1988", tipo:"Tokusatsu", emoji:"🤖", q:"Jaspion Juspion",
+          criacao:"Da Toei: Jaspion, criado por um robô, cruza o espaço com o robô gigante Daileon para impedir Satan Goss e o monstro Gohkin.",
+          fim:"Teve 46 episódios. No Brasil virou FENÔMENO na Manchete em 1988, com audiência recorde.",
+          elenco:"O ator Hikaru Kurosaki e o dublador Wellington Lima entraram para a memória afetiva do país.",
+          yt:"Jaspion episódio completo dublado Rede Manchete" },
+        { nome:"Changeman", orig:"Dengeki Sentai Changeman — Japão (1985)", ano:"1989", tipo:"Tokusatsu", emoji:"⚡", q:"Dengeki Sentai Changeman",
+          criacao:"Super Sentai clássico: cinco jovens da Força de Defesa da Terra recebem o poder de feras míticas contra o Império Gozma.",
+          fim:"Foram 55 episódios. A franquia Super Sentai viraria a base dos Power Rangers.",
+          elenco:"A abertura 'Change! Changeman!' é cantada de cor por quem viveu a época.",
+          yt:"Changeman episódio completo dublado Rede Manchete" },
+        { nome:"Comando Estelar Flashman", orig:"Choushinsei Flashman — Japão (1986)", ano:"1989", tipo:"Tokusatsu", emoji:"🌟", q:"Choushinsei Flashman",
+          criacao:"Super Sentai sobre cinco crianças criadas em estrelas diferentes que voltam à Terra contra o Império Mess.",
+          fim:"Teve 50 episódios; um dos tokusatsu mais amados da fase de ouro da Manchete.",
+          elenco:"Virou item de colecionador e tema de reencontros em convenções.",
+          yt:"Flashman episódio completo dublado Rede Manchete" },
+        { nome:"Jiban — O Policial de Aço", orig:"Kidou Keiji Jiban — Japão (1989)", ano:"1990", tipo:"Tokusatsu", emoji:"👮", q:"Kidou Keiji Jiban",
+          criacao:"Metal Hero: um policial morto é ressuscitado como o ciborgue Jiban contra a Empresa Neo e monstros feitos de emoções.",
+          fim:"Teve 52 episódios. Lembrado pela transformação 'Jiban!' e pelo carro Vysor.",
+          elenco:"A estética futurista marcou época e é relembrada em retrospectivas de tokusatsu.",
+          yt:"Jiban o policial de aço episódio completo dublado" },
+        { nome:"O Incrível Jiraiya", orig:"Sekai Ninja Sen Jiraiya — Japão (1988)", ano:"1990", tipo:"Tokusatsu", emoji:"🥷", q:"Sekai Ninja Sen Jiraiya",
+          criacao:"Metal Hero com tema ninja: Toha Yamaji veste a armadura de Jiraiya para proteger a caixa Pako de clãs ninjas do mundo todo.",
+          fim:"Teve 50 episódios. A mistura de ninjas com robôs conquistou a molecada.",
+          elenco:"A armadura branca é uma das imagens mais icônicas da era Manchete.",
+          yt:"Jiraiya episódio completo dublado Rede Manchete" },
+        { nome:"Black Kamen Rider", orig:"Kamen Rider Black — Japão (1987)", ano:"1991", tipo:"Tokusatsu", emoji:"🦗", q:"Kamen Rider Black",
+          criacao:"Kotaro Minami vira o gafanhoto-ciborgue Kamen Rider Black pela seita Gorgom — e luta contra ela, inclusive contra o irmão adotivo.",
+          fim:"Teve 51 episódios e a sequência 'Black RX'. Ganhou reboot adulto na Amazon em 2022.",
+          elenco:"O ator Tetsuo Kurata segue ativo e já visitou o Brasil para os fãs.",
+          yt:"Kamen Rider Black episódio completo dublado" },
+        { nome:"Ultraman", orig:"Japão — Tsuburaya (1966)", ano:"Manchete", tipo:"Tokusatsu", emoji:"🛸", q:"Ultraman 1966",
+          criacao:"De Eiji Tsuburaya, o gigante prateado de M78 se funde a um humano para proteger a Terra de kaijus. Fundou o gênero.",
+          fim:"A franquia Ultra nunca parou — dezenas de séries até hoje.",
+          elenco:"A Tsuburaya segue produzindo; o 'Shuwatch!' é reconhecido no mundo todo.",
+          yt:"Ultraman clássico episódio completo dublado" }
+      ]},
+      { cat:"🌙 Animes que marcaram a emissora", items:[
+        { nome:"Sailor Moon", orig:"Bishoujo Senshi Sailor Moon — Japão (1992)", ano:"1996", tipo:"Anime", emoji:"🌙", q:"Sailor Moon",
+          criacao:"Do mangá de Naoko Takeuchi: Usagi (Serena) vira uma guerreira mágica e, com as Sailors, protege a Terra. Estreou na Manchete em 1996 e popularizou o 'mahou shoujo' no Brasil.",
+          fim:"O anime clássico foi até 1997; ganhou 'Sailor Moon Crystal' e filmes depois.",
+          elenco:"Takeuchi supervisiona a franquia. 'Em nome da Lua, eu vou te castigar!' é eterno.",
+          yt:"Sailor Moon clássico episódio completo dublado" },
+        { nome:"Os Cavaleiros do Zodíaco", orig:"Saint Seiya — exibição Manchete (1994)", ano:"1994", tipo:"Anime", emoji:"⭐", q:"Saint Seiya", nota:"A grande febre otaku que a Manchete acendeu no Brasil.", yt:"Cavaleiros do Zodíaco episódio completo dublado saga santuário" }
+      ]}
     ]
   }
 };
 
 /* ================= Render ================= */
 const tabsEl = document.getElementById('tabs');
-const cardsEl = document.getElementById('cards');
+const contentEl = document.getElementById('content');
 const descEl = document.getElementById('decadeDesc');
+const catIndexEl = document.getElementById('catIndex');
 const order = ["70s","80s","90s","2000s","manchete"];
 let current = "70s";
 
-function ytUrl(q){
-  return "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
-}
+function ytUrl(q){ return "https://www.youtube.com/results?search_query=" + encodeURIComponent(q); }
+function slug(s){ return s.replace(/[^a-z0-9]+/gi,'-').toLowerCase(); }
 
 function renderTabs(){
   tabsEl.innerHTML = "";
   order.forEach(k=>{
     const d = document.createElement('div');
     d.className = "tab" + (k===current ? " active":"");
-    d.textContent = "📁 " + DECADES[k].label;
-    d.onclick = ()=>{ current=k; renderTabs(); renderCards(); };
+    d.textContent = (k==="manchete" ? "📺 " : "📁 ") + DECADES[k].label;
+    d.onclick = ()=>{ current=k; renderTabs(); renderContent(); document.getElementById('tabs').scrollIntoView({behavior:'smooth'}); };
     tabsEl.appendChild(d);
   });
 }
 
-function renderCards(){
-  const dec = DECADES[current];
-  descEl.textContent = dec.desc;
-  cardsEl.innerHTML = "";
-  dec.items.forEach(it=>{
-    const c = document.createElement('div');
-    c.className = "card bevel-out";
-    c.innerHTML = `
-      <div class="card-tb">
-        <span>${it.nome}</span>
-        <span class="yr">${it.ano || dec.label}</span>
-      </div>
-      <div class="card-body">
-        <div class="card-emoji">${it.emoji}</div>
-        <span class="card-type">${it.tipo}</span>
-        <h3>${it.nome}</h3>
-        <div class="orig">${it.orig}</div>
+function cardHTML(it, decLabel){
+  const isFull = !!it.criacao;
+  const q = it.q || it.nome;
+  const yt = it.yt || (it.nome + " episódio completo dublado");
+  const badge = it.ano || decLabel;
+  const retro = isFull ? `
         <dl class="retro">
           <dt>🎬 Como foi criada</dt><dd>${it.criacao}</dd>
           <dt>🏁 Como terminou</dt><dd>${it.fim}</dd>
           <dt>🚶 Por onde andam</dt><dd>${it.elenco}</dd>
-        </dl>
-        <a class="yt-btn" href="${ytUrl(it.yt)}" target="_blank" rel="noopener">▶ ASSISTIR NO YOUTUBE</a>
-      </div>`;
-    cardsEl.appendChild(c);
-  });
+        </dl>` : (it.nota ? `<div class="nota">${it.nota}</div>` : "");
+  return `
+    <div class="card bevel-out">
+      <div class="card-tb"><span class="nm">${it.nome}</span><span class="yr">${badge}</span></div>
+      <div class="card-body">
+        <div class="poster loading" data-q="${encodeURIComponent(q)}">
+          <div class="ph"><span>${it.emoji||"📼"}</span><span class="nm2">${it.nome}</span></div>
+        </div>
+        <span class="card-type">${it.tipo}</span>
+        <h3>${it.nome}</h3>
+        <div class="orig">${it.orig}</div>
+        ${retro}
+        <a class="yt-btn" href="${ytUrl(yt)}" target="_blank" rel="noopener">▶ ASSISTIR NO YOUTUBE</a>
+      </div>
+    </div>`;
 }
+
+function renderContent(){
+  const dec = DECADES[current];
+  descEl.textContent = dec.desc;
+
+  // índice de categorias
+  catIndexEl.innerHTML = dec.groups.map(g=>{
+    return `<a href="#cat-${slug(g.cat)}">${g.cat} <b>(${g.items.length})</b></a>`;
+  }).join("");
+
+  // seções
+  contentEl.innerHTML = dec.groups.map(g=>{
+    const cards = g.items.map(it=>cardHTML(it, dec.label)).join("");
+    return `
+      <div class="cat-header" id="cat-${slug(g.cat)}">
+        <span>${g.cat}</span><span class="cnt">${g.items.length} títulos</span>
+      </div>
+      <div class="cards">${cards}</div>`;
+  }).join("");
+
+  // carregar imagens (lazy)
+  contentEl.querySelectorAll('.poster[data-q]').forEach(p=>imgObserver.observe(p));
+}
+
+/* ====== Imagens da Wikipédia (lazy, com fallback) ====== */
+const imgCache = {};
+async function fetchWikiThumb(query){
+  if(imgCache[query]!==undefined) return imgCache[query];
+  const endpoints = ["https://pt.wikipedia.org/w/api.php","https://en.wikipedia.org/w/api.php"];
+  for(const base of endpoints){
+    try{
+      const url = base + "?action=query&format=json&origin=*&generator=search&gsrlimit=1"
+        + "&gsrsearch=" + encodeURIComponent(query)
+        + "&prop=pageimages&piprop=thumbnail&pithumbsize=420&pilicense=any";
+      const r = await fetch(url);
+      const j = await r.json();
+      const pages = j.query && j.query.pages;
+      if(pages){
+        const p = Object.values(pages)[0];
+        if(p && p.thumbnail && p.thumbnail.source){ imgCache[query]=p.thumbnail.source; return imgCache[query]; }
+      }
+    }catch(e){/* tenta próximo */}
+  }
+  imgCache[query]=null; return null;
+}
+
+const imgObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(async (en)=>{
+    if(!en.isIntersecting) return;
+    const el = en.target; imgObserver.unobserve(el);
+    const q = decodeURIComponent(el.getAttribute('data-q'));
+    const src = await fetchWikiThumb(q);
+    el.classList.remove('loading');
+    if(src){
+      const img = new Image();
+      img.onload = ()=>{ el.innerHTML=""; el.appendChild(img); };
+      img.onerror = ()=>{}; // mantém o pôster estilizado
+      img.alt = q;
+      img.src = src;
+    }
+  });
+},{ rootMargin: "300px" });
 
 /* ============ Menu Iniciar ============ */
 const startBtn = document.getElementById('startBtn');
@@ -871,7 +810,7 @@ const startMenu = document.getElementById('startMenu');
 startBtn.onclick = (e)=>{ e.stopPropagation(); startMenu.classList.toggle('open'); };
 document.addEventListener('click', ()=> startMenu.classList.remove('open'));
 startMenu.querySelectorAll('[data-goto]').forEach(li=>{
-  li.onclick = ()=>{ current = li.getAttribute('data-goto'); renderTabs(); renderCards();
+  li.onclick = ()=>{ current = li.getAttribute('data-goto'); renderTabs(); renderContent();
     startMenu.classList.remove('open');
     document.getElementById('tabs').scrollIntoView({behavior:'smooth'});
   };
@@ -880,21 +819,17 @@ startMenu.querySelectorAll('[data-goto]').forEach(li=>{
 /* ============ Relógio ============ */
 function tick(){
   const n = new Date();
-  const h = String(n.getHours()).padStart(2,'0');
-  const m = String(n.getMinutes()).padStart(2,'0');
-  document.getElementById('clock').textContent = h+":"+m;
+  document.getElementById('clock').textContent =
+    String(n.getHours()).padStart(2,'0')+":"+String(n.getMinutes()).padStart(2,'0');
 }
 setInterval(tick, 1000); tick();
 
-/* ============ Contador engraçadinho ============ */
-(function(){
-  const el = document.getElementById('counter');
-  let base = 13370 + Math.floor(Math.random()*90);
-  el.textContent = String(base).padStart(8,'0');
-})();
+/* ============ Contador ============ */
+(function(){ const el=document.getElementById('counter');
+  el.textContent = String(13370 + Math.floor(Math.random()*90)).padStart(8,'0'); })();
 
 renderTabs();
-renderCards();
+renderContent();
 </script>
 </body>
 </html>
