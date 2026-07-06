@@ -339,6 +339,7 @@
       <li data-goto="80s">📁 Década de 80</li>
       <li data-goto="90s">📁 Década de 90</li>
       <li data-goto="2000s">📁 Anos 2000</li>
+      <li data-goto="manchete">📺 TV Manchete</li>
       <li class="sep"></li>
       <li onclick="document.getElementById('top').scrollIntoView()">🔎 Ir para o topo</li>
       <li onclick="alert('Salvando na memória afetiva... 100% concluído! ✅')">💾 Salvar lembranças</li>
@@ -424,6 +425,27 @@ const DECADES = {
         fim:"Terminou em 1972 após 8 temporadas; reprises embalaram as tardes brasileiras por décadas.",
         elenco:"Elizabeth Montgomery (Samantha) faleceu em 1995. A série ganhou um filme com Nicole Kidman em 2005.",
         yt:"A Feiticeira Bewitched episódio completo dublado"
+      },
+      {
+        nome:"Tom e Jerry", orig:"Tom and Jerry — EUA (reprises anos 70)", tipo:"Desenho", emoji:"🐱",
+        criacao:"Criados por William Hanna e Joseph Barbera na MGM nos anos 40, o gato e o rato viveram sua eterna perseguição sem diálogos — só gags físicas geniais — e dominaram as tardes brasileiras.",
+        fim:"Os curtas clássicos rodam há 80 anos; a dupla ganhou filmes, séries novas e um longa híbrido em 2021.",
+        elenco:"Hanna (†2001) e Barbera (†2006) fundaram a Hanna-Barbera, maior fábrica de desenhos da TV. Tom e Jerry seguem imortais.",
+        yt:"Tom e Jerry episódios completos clássicos"
+      },
+      {
+        nome:"Zé Colmeia", orig:"The Yogi Bear Show — EUA (1961)", tipo:"Desenho", emoji:"🐻",
+        criacao:"Da Hanna-Barbera, o urso mais esperto que a média do Parque Jellystone e seu amigo Catatau viviam roubando cestas de piquenique e fugindo do Guarda Smith.",
+        fim:"Rodou por décadas em reprises; ganhou filme live-action/CGI em 2010.",
+        elenco:"O personagem foi inspirado em bordões da época e virou um dos rostos mais reconhecíveis da Hanna-Barbera.",
+        yt:"Zé Colmeia desenho episódio completo dublado"
+      },
+      {
+        nome:"Manda-Chuva", orig:"Top Cat — EUA (1961)", tipo:"Desenho", emoji:"🎩",
+        criacao:"Da Hanna-Barbera: o gato malandro Manda-Chuva lidera sua turma de gatos de rua em Nova York, sempre aprontando golpes e fugindo do Guarda Belo.",
+        fim:"Teve só 30 episódios, mas as reprises o eternizaram no Brasil e na América Latina — onde é ainda mais popular que nos EUA.",
+        elenco:"Ganhou filmes animados no México em 2011 e 2015, provando o carinho latino pelo personagem.",
+        yt:"Manda-Chuva Top Cat episódio completo dublado"
       }
     ]
   },
@@ -501,6 +523,27 @@ const DECADES = {
         fim:"Foi até 1991, abrindo caminho para toda a era de ouro da Disney Afternoon (Tico e Teco, DuckTales).",
         elenco:"Marcou o início da Disney Television Animation, que dominaria as tardes dos anos 90.",
         yt:"Ursinhos Gummi episódio completo dublado"
+      },
+      {
+        nome:"Os Smurfs", orig:"The Smurfs — EUA/Bélgica (1981)", tipo:"Desenho", emoji:"🔵",
+        criacao:"A Hanna-Barbera adaptou os personagens azuis do belga Peyo: uma aldeia de cogumelos onde vivem os Smurfs, sempre fugindo do bruxo Gargamel e seu gato Cruel.",
+        fim:"A série foi até 1989. A marca voltou forte com filmes híbridos (2011) e uma nova animação em 2021.",
+        elenco:"Peyo (Pierre Culliford), criador dos Smurfs, faleceu em 1992. Os bonecos azuis são bilionários em licenciamento até hoje.",
+        yt:"Os Smurfs desenho episódio completo dublado"
+      },
+      {
+        nome:"Inspetor Bugiganga", orig:"Inspector Gadget — EUA/França/Canadá (1983)", tipo:"Desenho", emoji:"🕵️",
+        criacao:"Um detetive ciborgue atrapalhado, cheio de geringonças no corpo, que resolve os casos sem perceber — graças à sobrinha Penny e ao cão Cérebro — contra o Dr. Garra.",
+        fim:"A série clássica foi até 1986; ganhou filme com Matthew Broderick (1999) e reboots em CGI na Netflix.",
+        elenco:"O bordão 'Vai, Bugiganga!' e a trilha inconfundível marcaram a década. A franquia segue rendendo novas séries.",
+        yt:"Inspetor Bugiganga episódio completo dublado"
+      },
+      {
+        nome:"As Tartarugas Ninja", orig:"Teenage Mutant Ninja Turtles — EUA (1987)", tipo:"Desenho", emoji:"🐢",
+        criacao:"Nascidas de um quadrinho independente de Eastman e Laird, as quatro tartarugas mutantes ninjas (Leonardo, Michelangelo, Donatello e Raphael) viraram desenho, febre de brinquedos e cultura pop.",
+        fim:"A animação clássica foi até 1996; a franquia nunca parou — filmes live-action, reboots e o elogiado 'Caos Mutante' (2023).",
+        elenco:"Kevin Eastman segue envolvido nos projetos. O grito 'Cowabunga!' e a paixão por pizza atravessaram gerações.",
+        yt:"Tartarugas Ninja 1987 episódio completo dublado"
       }
     ]
   },
@@ -592,6 +635,27 @@ const DECADES = {
         fim:"Terminou em 1996 e lançou a carreira de cinema de Will Smith; ganhou reboot dramático 'Bel-Air' em 2022.",
         elenco:"Will Smith virou megastar de Hollywood. James Avery (Tio Phil) faleceu em 2013. O elenco fez uma emocionante reunião em 2020.",
         yt:"Um Maluco no Pedaço Fresh Prince episódio completo dublado"
+      },
+      {
+        nome:"Yu Yu Hakusho", orig:"Japão (1992)", tipo:"Anime", emoji:"👊",
+        criacao:"Do mangá de Yoshihiro Togashi: o delinquente Yusuke Urameshi morre salvando uma criança e volta como detetive sobrenatural, enfrentando demônios em torneios de luta.",
+        fim:"O anime teve 112 episódios (até 1995). Virou febre no Brasil pela Manchete/Globo e ganhou uma série live-action na Netflix em 2023.",
+        elenco:"Togashi depois criou 'Hunter x Hunter'. O 'Reigun' (Pistola Espiritual) do Yusuke é um dos golpes mais imitados pela criançada.",
+        yt:"Yu Yu Hakusho episódio completo dublado"
+      },
+      {
+        nome:"Digimon Adventure", orig:"Japão (1999)", tipo:"Anime", emoji:"🦖",
+        criacao:"Nascido dos bichinhos virtuais da Bandai, o anime leva um grupo de crianças ao Mundo Digital, onde cada uma ganha um Digimon parceiro que 'digievolui' para proteger os dois mundos.",
+        fim:"A primeira temporada foi até 2000; a franquia seguiu com várias sequências e o filme nostálgico 'Last Evolution' (2020).",
+        elenco:"Frequentemente comparado (e rivalizado) com Pokémon, tem base de fãs fiel e músicas de abertura cultuadas ('Brave Heart').",
+        yt:"Digimon Adventure primeira temporada episódio completo dublado"
+      },
+      {
+        nome:"Samurai X", orig:"Rurouni Kenshin — Japão (1996)", tipo:"Anime", emoji:"⚔️",
+        criacao:"Do mangá de Nobuhiro Watsuki: Kenshin Himura, um ex-assassino da era Meiji, jura nunca mais matar e vaga com uma espada de lâmina invertida buscando redenção.",
+        fim:"O anime foi até 1998, seguido de OVAs aclamados. Ganhou filmes live-action de sucesso e um remake em 2023.",
+        elenco:"Watsuki segue como mangaká. A cicatriz em X no rosto de Kenshin e o bordão 'oro?' são marcas registradas.",
+        yt:"Samurai X Rurouni Kenshin episódio completo dublado"
       }
     ]
   },
@@ -685,6 +749,69 @@ const DECADES = {
         yt:"desenhos Cartoon Network anos 2000 episódios completos dublado"
       }
     ]
+  },
+
+  "manchete": {
+    label: "TV Manchete",
+    desc: "dir manchete /p:tokusatsu-e-animes --sintoniza CANAL-6-UHF.SYS",
+    items: [
+      {
+        nome:"O Fantástico Jaspion", orig:"Kyojuu Tokusou Juspion — Japão (1985)", ano:"1988", tipo:"Tokusatsu", emoji:"🤖",
+        criacao:"Série da Toei em que Jaspion, um guerreiro criado por um robô, cruza o espaço com sua nave e o robô gigante Daileon para impedir Satan Goss e o monstro Gohkin de destruir a galáxia. Estreou na Rede Manchete em 1988.",
+        fim:"Teve 46 episódios. Não emplacou tanto no Japão, mas no Brasil virou FENÔMENO — audiência recorde na Manchete e uma legião de fãs que dura até hoje.",
+        elenco:"O ator Hikaru Kurosaki (Jaspion) e o dublador brasileiro Wellington Lima entraram para a memória afetiva do país; o personagem visitou o Brasil em eventos décadas depois.",
+        yt:"Jaspion episódio completo dublado Rede Manchete"
+      },
+      {
+        nome:"Changeman", orig:"Dengeki Sentai Changeman — Japão (1985)", ano:"1989", tipo:"Tokusatsu", emoji:"⚡",
+        criacao:"Um dos Super Sentai clássicos: cinco jovens da Força de Defesa da Terra recebem o poder das feras míticas para enfrentar o Império Gozma. Fez enorme sucesso na Manchete.",
+        fim:"Foram 55 episódios. A franquia Super Sentai, da qual faz parte, viraria a base dos Power Rangers anos depois.",
+        elenco:"O elenco japonês seguiu carreira em dramas e tokusatsu; no Brasil, a marchinha de abertura 'Change! Changeman!' é cantada de cor por quem viveu os anos 80/90.",
+        yt:"Changeman episódio completo dublado Rede Manchete"
+      },
+      {
+        nome:"Comando Estelar Flashman", orig:"Choushinsei Flashman — Japão (1986)", ano:"1989", tipo:"Tokusatsu", emoji:"🌟",
+        criacao:"Super Sentai sobre cinco crianças sequestradas e criadas em estrelas diferentes, que voltam à Terra como os Flashman para combater o Império Mess e suas experiências genéticas.",
+        fim:"Teve 50 episódios. No Brasil foi um dos tokusatsu mais amados da fase de ouro da Manchete.",
+        elenco:"Assim como os outros Sentai, virou item de colecionador e tema de reencontros de fãs em convenções geek brasileiras.",
+        yt:"Flashman episódio completo dublado Rede Manchete"
+      },
+      {
+        nome:"Jiban — O Policial de Aço", orig:"Kidou Keiji Jiban — Japão (1989)", ano:"1990", tipo:"Tokusatsu", emoji:"👮",
+        criacao:"Da linha Metal Hero: um policial morto é ressuscitado como o ciborgue Jiban para enfrentar a sinistra Empresa Neo e seus monstros criados a partir de emoções humanas.",
+        fim:"Teve 52 episódios. Estourou na Manchete e é lembrado pela transformação 'Jiban!' e pelo carro Vysor.",
+        elenco:"O bordão e a estética futurista marcaram época; a série é constantemente relembrada em retrospectivas de tokusatsu no Brasil.",
+        yt:"Jiban o policial de aço episódio completo dublado"
+      },
+      {
+        nome:"O Incrível Jiraiya", orig:"Sekai Ninja Sen Jiraiya — Japão (1988)", ano:"1990", tipo:"Tokusatsu", emoji:"🥷",
+        criacao:"Metal Hero com tema ninja: Toha Yamaji veste a armadura de Jiraiya para proteger a caixa Pako e enfrentar clãs ninjas de todo o mundo liderados por Dokusai.",
+        fim:"Teve 50 episódios. A mistura de ninjas com robôs e a família Yamaji conquistaram a molecada brasileira.",
+        elenco:"Segue cultuado; a armadura branca de Jiraiya é uma das imagens mais icônicas da era Manchete.",
+        yt:"Jiraiya episódio completo dublado Rede Manchete"
+      },
+      {
+        nome:"Black Kamen Rider", orig:"Kamen Rider Black — Japão (1987)", ano:"1991", tipo:"Tokusatsu", emoji:"🦗",
+        criacao:"Kotaro Minami é transformado no gafanhoto-ciborgue Kamen Rider Black pela seita Gorgom, e luta contra ela — inclusive contra seu irmão adotivo. Um dos Kamen Riders mais sombrios e queridos.",
+        fim:"Teve 51 episódios e a sequência 'Black RX'. No Brasil, foi febre na Manchete. Ganhou o reboot adulto 'Kamen Rider Black Sun' na Amazon em 2022.",
+        elenco:"O ator Tetsuo Kurata (Kotaro) segue ativo no Japão e já visitou o Brasil para encontrar os fãs.",
+        yt:"Kamen Rider Black episódio completo dublado"
+      },
+      {
+        nome:"Ultraman", orig:"Japão — Tsuburaya (1966)", ano:"Manchete", tipo:"Tokusatsu", emoji:"🛸",
+        criacao:"Criado por Eiji Tsuburaya, o gigante prateado de Nebulosa M78 se funde a um humano para proteger a Terra de kaijus gigantes. Fundou todo o gênero dos heróis gigantes.",
+        fim:"A franquia Ultra nunca parou — são dezenas de séries no Japão até hoje. Várias gerações passaram pela TV brasileira.",
+        elenco:"A Tsuburaya Productions segue produzindo novos Ultramans; o 'Shuwatch!' é reconhecido no mundo todo.",
+        yt:"Ultraman clássico episódio completo dublado"
+      },
+      {
+        nome:"Sailor Moon", orig:"Bishoujo Senshi Sailor Moon — Japão (1992)", ano:"1996", tipo:"Anime", emoji:"🌙",
+        criacao:"Do mangá de Naoko Takeuchi: Usagi (Serena) descobre ser uma guerreira mágica e, com as Sailors, protege a Terra em nome da Lua. Estreou na Manchete em 1996 e popularizou o gênero 'mahou shoujo' no Brasil.",
+        fim:"O anime clássico foi até 1997; ganhou o reboot 'Sailor Moon Crystal' e filmes nos anos 2010/2020.",
+        elenco:"Naoko Takeuchi segue supervisionando a franquia. 'Em nome da Lua, eu vou te castigar!' é bordão eterno.",
+        yt:"Sailor Moon clássico episódio completo dublado"
+      }
+    ]
   }
 };
 
@@ -692,7 +819,7 @@ const DECADES = {
 const tabsEl = document.getElementById('tabs');
 const cardsEl = document.getElementById('cards');
 const descEl = document.getElementById('decadeDesc');
-const order = ["70s","80s","90s","2000s"];
+const order = ["70s","80s","90s","2000s","manchete"];
 let current = "70s";
 
 function ytUrl(q){
@@ -720,7 +847,7 @@ function renderCards(){
     c.innerHTML = `
       <div class="card-tb">
         <span>${it.nome}</span>
-        <span class="yr">${dec.label}</span>
+        <span class="yr">${it.ano || dec.label}</span>
       </div>
       <div class="card-body">
         <div class="card-emoji">${it.emoji}</div>
